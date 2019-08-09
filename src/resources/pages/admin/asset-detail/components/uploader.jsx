@@ -40,15 +40,26 @@ class Uploader extends React.Component {
   componentDidMount() {
     const uploader = this._uploader = new plupload.Uploader({
       browse_button: this.refs.browseButton,
-      drop_element: this.refs.dropzone
+      drop_element: this.refs.dropzone,
+      url: '/admin/assets/123/images',
+      chunk_size: '200kb',
+      unique_names: true
     })
 
     // handle event
     uploader.bind('QueueChanged', (uploader) => {
+      console.log(uploader.files)
+
       this.setState({
         queue: uploader.files
       })
     })
+
+    // uploader.bind('UploadComplete', (uploader) => {
+    //   uploader.files.length = 0
+
+    //   uploader.trigger('QueueChanged')
+    // })
 
     uploader.init()
   }
@@ -64,14 +75,15 @@ class Uploader extends React.Component {
       <div>
         <h2>Uploader</h2>
         <button type="button" ref="browseButton">Choose files</button>
-        <button type="button" ref="submitButton">Upload</button>
-        <DropZone ref="dropzone" />
-        <FileList
-          files={this.state.queue}
-          onRemove={ (id) => {
-            this._uploader.removeFile(id)
-          } }
-        />
+        <button type="button" onClick={ () => this._uploader.start() }>Upload</button>
+        <DropZone ref="dropzone">
+          <FileList
+            files={this.state.queue}
+            onRemove={ (id) => {
+              this._uploader.removeFile(id)
+            } }
+          />
+        </DropZone>
       </div>
     )
   }

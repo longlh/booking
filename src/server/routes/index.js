@@ -1,3 +1,5 @@
+import * as controllers from '@/controllers'
+
 export default {
   '/': {
     get: (req, res, next) => {
@@ -9,9 +11,12 @@ export default {
       res.render('admin/dashboard')
     }
   },
-  '/admin/assets/:id?': {
+  '/admin/assets/:id': {
     get: (req, res, next) => {
       res.render('admin/asset-detail')
     }
+  },
+  '/admin/assets/:id/images': {
+    post: controllers.image.upload
   }
 }
