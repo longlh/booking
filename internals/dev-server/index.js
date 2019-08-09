@@ -63,7 +63,7 @@ compiler.hooks.emit.tap('done', () => {
   }
 
   app.listen(PORT, () => {
-    state.isStarted = false
+    state.isStarted = true
 
     console.log(`dev-server started at: ${PORT}`)
   })

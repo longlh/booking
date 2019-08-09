@@ -8,7 +8,9 @@
   ],
   "plugins": [
     [ "module-resolver", {
-      "root": [ "./src/server" ]
+      "alias": {
+        "@": "./src/server"
+      }
     } ],
     "@babel/plugin-transform-runtime",
     "@babel/plugin-proposal-object-rest-spread"

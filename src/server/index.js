@@ -1,10 +1,11 @@
-import express from 'express'
+import createExpressServer from '@/express-server'
+import config from '@/infrastructure/config'
 
 const main = async () => {
-  const app = express()
+  const app = await createExpressServer()
 
-  app.listen(4000, () => {
-    console.log(`App started at :4000`)
+  app.listen(config.port, () => {
+    console.log(`Server started at: ${config.port}`)
   })
 }
 
