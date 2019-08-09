@@ -1,31 +1,25 @@
 import React from 'react'
-import { Editor, EditorState } from 'draft-js'
-import 'draft-js/dist/Draft.css'
+
+import CKEditor from '@ckeditor/ckeditor5-react'
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
+
+import styled from 'styled-components'
 
 import Uploader from './uploader'
 
+const EditorWrapper = styled.div`
+  border: 1px solid gray;
+  padding: 8px;
+`
+
 class Form extends React.Component {
-  constructor(...args) {
-    super(...args)
-
-    this.state = {
-      editorState: EditorState.createEmpty()
-    }
-
-    this.onChange = this.onChange.bind(this)
-  }
-
-  onChange(editorState) {
-    this.setState({ editorState })
-  }
-
   render() {
     return (
       <div>
         <Uploader />
-        <Editor
-          editorState={this.state.editorState}
-          onChange={this.onChange}
+        <CKEditor
+          editor={ClassicEditor}
+          data=""
         />
       </div>
     )
