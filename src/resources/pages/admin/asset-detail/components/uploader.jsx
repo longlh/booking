@@ -9,11 +9,20 @@ const DropZone = styled.div`
   margin: 0 auto;
 `
 
-const FileList = ({ files = [] }) => {
+const FileList = ({
+  files = [],
+  onRemove
+}) => {
   return (
     <ul>
       { files.map((file) => (
-        <li key={file.id}>{ file.name }</li>
+        <li key={file.id}>
+          <span>{file.name}</span>
+          <button type="button"
+            onClick={ () => onRemove(file.id) }>
+            Remove
+           </button>
+        </li>
       )) }
     </ul>
   )
@@ -29,8 +38,6 @@ class Uploader extends React.Component {
   }
 
   componentDidMount() {
-    console.log('xxx', this.refs.dropzone)
-
     const uploader = this._uploader = new plupload.Uploader({
       browse_button: this.refs.browseButton,
       drop_element: this.refs.dropzone
@@ -59,7 +66,12 @@ class Uploader extends React.Component {
         <button type="button" ref="browseButton">Choose files</button>
         <button type="button" ref="submitButton">Upload</button>
         <DropZone ref="dropzone" />
-        <FileList files={this.state.queue} />
+        <FileList
+          files={this.state.queue}
+          onRemove={ (id) => {
+            this._uploader.removeFile(id)
+          } }
+        />
       </div>
     )
   }
