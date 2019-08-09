@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-import config from 'infrastructure/config'
+import config from '@/infrastructure/config'
 
 mongoose.connect(config.mongodb, {
   promiseLibrary: Promise,
@@ -9,6 +9,6 @@ mongoose.connect(config.mongodb, {
   useFindAndModify: false
 }, (e) => {
   if (e) console.error(e)
-}
+})
 
 export default mongoose
