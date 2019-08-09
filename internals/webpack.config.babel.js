@@ -2,6 +2,8 @@ import glob from 'glob'
 import path from 'path'
 
 // webpack plugins
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin'
 import WebpackAssetsManifest from 'webpack-assets-manifest'
 
 // location definitions
@@ -50,6 +52,10 @@ export default {
     pathinfo:false
   },
   plugins: [
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].[hash:6].css'
+    }),
+    new OptimizeCssAssetsPlugin(),
     new WebpackAssetsManifest({
       output: path.join(outDir, '../manifest.json'),
       publicPath: `${assetEndpoint}/assets/`,
@@ -80,6 +86,15 @@ export default {
           ]
         }
       }
+    }, {
+      test: /\.scss$/,
+      use: [ {
+        loader: MiniCssExtractPlugin.loader
+      }, {
+        loader: 'css-loader'
+      }, {
+        loader: 'sass-loader'
+      } ]
     }, {
       test: /.(ico|jpg|png|gif|svg|bmp|webp)$/,
       use: {
