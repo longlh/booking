@@ -2,6 +2,7 @@ import express from 'express'
 import slash from 'express-slash'
 import morgan from 'morgan'
 
+import initAsset from './asset'
 import initRoutes from './routing'
 import initViewEngine from './view-engine'
 
@@ -15,6 +16,7 @@ export default async () => {
   app.use(morgan('dev'))
   app.use(slash())
 
+  await initAsset(app)
   await initRoutes(app)
   await initViewEngine(app)
 
