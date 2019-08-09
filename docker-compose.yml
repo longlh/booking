@@ -1,0 +1,20 @@
+version: '3.5'
+services:
+  mongo:
+    image: mongo:3.6
+    volumes:
+      - ./data/mongo:/data/db
+    ports:
+      - "27020:27017"
+
+  booking:
+    image: node:carbon
+    container_name: joshua.booking
+    working_dir: /usr/booking
+    command: bash -c "tail -f /dev/null"
+    volumes:
+      - .:/usr/booking
+      - /usr/booking/node_modules
+    ports:
+      - "4000:4000"
+      - "4001:4001"

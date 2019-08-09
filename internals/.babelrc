@@ -1,0 +1,17 @@
+{
+  "presets": [
+    [ "@babel/preset-env", {
+      "targets": {
+        "node": "8.10"
+      }
+    } ],
+    "@babel/preset-react"
+  ],
+  "plugins": [
+    [ "module-resolver", {
+      "root": [ "./dev-server" ]
+    } ],
+    "@babel/plugin-transform-runtime",
+    "@babel/plugin-proposal-object-rest-spread"
+  ]
+}
