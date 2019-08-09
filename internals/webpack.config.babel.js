@@ -13,13 +13,31 @@ const outDir = path.join(rootDir, 'data/dist/assets')
 const devMode = process.env.NODE_ENV !== 'production'
 const assetEndpoint = process.env.ASSET_ENDPOINT || ''
 
+// search all index.files(js|scss|...) in resources/pages
+const pageEntries = glob.sync(
+  path.join(resourceDir, 'pages/**/*/index.*'),
+  { nodir: true }
+).reduce(
+  (entries, file) => {
+    const dir = path.dirname(file)
+      .replace(resourceDir, '')
+      .replace(/^\/pages\//, '')
+
+    return {
+      ...entries,
+      [dir]: [
+        ...(entries[dir]) || [],
+        file
+      ]
+    }
+  },
+  {}
+)
+
 export default {
   mode: 'production',
   entry: {
-    lp: glob.sync(
-      path.join(resourceDir, 'pages/lp/index.*'),
-      { nodir: true }
-    ),
+    ...pageEntries,
     img: glob.sync(
       path.join(resourceDir, 'img/**/*'),
       { noDir: true }

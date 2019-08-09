@@ -17,8 +17,10 @@ export default async () => {
   app.use(slash())
 
   await initAsset(app)
-  await initRoutes(app)
   await initViewEngine(app)
+
+  // initialize routes at last
+  await initRoutes(app)
 
   return app
 }

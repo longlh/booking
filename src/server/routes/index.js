@@ -1,7 +1,12 @@
 export default {
   '/': {
     get: (req, res, next) => {
-      res.render('lp/view.ect')
+      res.render('lp')
+    }
+  },
+  '/admin': {
+    get: (req, res, next) => {
+      res.render('admin/dashboard')
     }
   }
 }
