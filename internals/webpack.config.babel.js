@@ -63,7 +63,7 @@ export default {
     })
   ],
   resolve: {
-    extensions: [ '.css', '.js', '.jsx', '.scss' ],
+    extensions: [ '.js', '.jsx', '.css', '.scss' ],
     modules: [
       'node_modules',
       'src/resources'
@@ -86,6 +86,13 @@ export default {
           ]
         }
       }
+    }, {
+      test: /\.css$/,
+      use: [ {
+        loader: MiniCssExtractPlugin.loader
+      }, {
+        loader: 'css-loader'
+      } ]
     }, {
       test: /\.scss$/,
       use: [ {

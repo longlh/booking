@@ -8,5 +8,10 @@ export default {
     get: (req, res, next) => {
       res.render('admin/dashboard')
     }
+  },
+  '/admin/assets/:id?': {
+    get: (req, res, next) => {
+      res.render('admin/asset-detail')
+    }
   }
 }
