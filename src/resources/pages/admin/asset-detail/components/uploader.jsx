@@ -46,7 +46,7 @@ class Uploader extends React.Component {
     uploader.init()
   }
 
-  componentWillMount() {
+  componentWillUnmount() {
     if (this._uploader) {
       this._uploader.destroy()
     }
