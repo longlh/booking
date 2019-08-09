@@ -1,8 +1,8 @@
 import React from 'react'
 import { render } from 'react-dom'
 
-import Editor from './components/editor'
+import Form from './components/form'
 
-const editor = document.getElementById('editor')
+const form = document.getElementById('form')
 
-render(<Editor />, editor)
+render(<Form />, form)

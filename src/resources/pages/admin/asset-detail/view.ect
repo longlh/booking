@@ -1,9 +1,13 @@
 <% extend 'admin/layout' %>
 
+<% block 'head-end' :%>
+  <link rel="stylesheet" href="<%= @__asset('admin/asset-detail.css') %>">
+<% end %>
+
 <% block 'body-end' :%>
   <script src="<%= @__asset('admin/asset-detail.js') %>"></script>
 <% end %>
 
 <h1>Asset Detail</h1>
 
-<div id="editor"></div>
+<div id="form"></div>
