@@ -5,6 +5,11 @@
 <% end %>
 
 <% block 'body-end' :%>
+  <script>
+  <!--
+    var ASSET = <%- JSON.stringify(@asset) %>;
+  -->
+  </script>
   <script src="<%= @__asset('admin/asset-detail.js') %>"></script>
 <% end %>
 

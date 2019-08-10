@@ -19,10 +19,12 @@ class Form extends React.Component {
 
     this.state = {
       asset: {
-        name: 'Example',
-        description: 'Lorem ipsum dolor sit amet, sollicitudin ultrices diam non in, purus in laoreet, porta conubia ipsum quis, at ac enim ac, donec ligula fermentum quisque metus. Sit blandit a vel non proin dolor.',
-        images: [],
-        price: ''
+        name: this.props.asset.name,
+        description: this.props.asset.description,
+        price: this.props.asset.price,
+        images: [
+          ...this.props.asset.images
+        ]
       }
     }
 
@@ -37,6 +39,15 @@ class Form extends React.Component {
         <Uploader
           onFileUploaded={ (image) => this.addAssetImage(image) }
         />
+        <ul>
+          { this.state.asset.images.map(
+            (image) => (
+              <li key={image._id}>
+                <img src={`/upload/${image.path}`} />
+              </li>
+            )
+          )}
+        </ul>
         <CKEditor
           editor={ClassicEditor}
           data={this.state.asset.description}
@@ -56,11 +67,12 @@ class Form extends React.Component {
   async saveAsset(e) {
     e.preventDefault()
 
-    console.log(this.state.asset)
-
     // send ajax
-    await request.post('/admin/assets')
-      .send(this.state.asset)
+    await request.post(`/admin/assets/${this.props.asset._id}`)
+      .send({
+        id: this.props.asset._id,
+        ...this.state.asset
+      })
 
     return false
   }

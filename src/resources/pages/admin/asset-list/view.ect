@@ -1,0 +1,15 @@
+<% extend 'admin/layout' %>
+
+<% block 'body-end' :%>
+  <script src="<%= @__asset('admin/asset-list.js') %>"></script>
+<% end %>
+
+<h1>Assets</h1>
+
+<ul>
+  <% for asset in @assets :%>
+    <li>
+      <a href="/admin/assets/<%= asset._id %>"><%= asset.name %></a>
+    </li>
+  <% end %>
+</ul>

@@ -12,12 +12,12 @@ export default {
     }
   },
   '/admin/assets': {
+    get: controllers.asset.list,
     post: controllers.asset.create
   },
   '/admin/assets/:id': {
-    get: (req, res, next) => {
-      res.render('admin/asset-detail')
-    }
+    get: controllers.asset.view,
+    post: controllers.asset.update
   },
   '/admin/images': {
     post: controllers.image.upload

@@ -5,4 +5,4 @@ import Form from './components/form'
 
 const form = document.getElementById('form')
 
-render(<Form />, form)
+render(<Form asset={ASSET} />, form)
