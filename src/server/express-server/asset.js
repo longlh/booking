@@ -14,5 +14,8 @@ export default async (app) => {
   const manifest = await fs.readJson(manifestPath)
   app.locals.__asset = (file) => manifest[file]
 
+  // handle uploaded images
+  app.use('/upload', express.static(path.join(config._root, '../../data/upload')))
+
   return app
 }

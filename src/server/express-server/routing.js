@@ -2,7 +2,7 @@ import routes from '@/routes'
 
 const safeController = (controller) => {
   if (Array.isArray(controller)) {
-    return middlewares.map(safeController)
+    return controller.map(safeController)
   }
 
   return async (req, res, next) => {

@@ -11,12 +11,15 @@ export default {
       res.render('admin/dashboard')
     }
   },
+  '/admin/assets': {
+    post: controllers.asset.create
+  },
   '/admin/assets/:id': {
     get: (req, res, next) => {
       res.render('admin/asset-detail')
     }
   },
-  '/admin/assets/:id/images': {
+  '/admin/images': {
     post: controllers.image.upload
   }
 }

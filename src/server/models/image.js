@@ -4,10 +4,6 @@ const schema = new mongoose.Schema({
   path: {
     type: String,
     required: true
-  },
-  assetId: {
-    type: String,
-    required: true
   }
 })
 

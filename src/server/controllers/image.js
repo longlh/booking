@@ -20,8 +20,6 @@ export default {
     const form = formidable.IncomingForm()
     const storeDir = path.resolve(config._root, '../../data/upload')
 
-    const assetId = req.params.id
-
     form.parse(req, async (err, fields, files) => {
       if (err) {
         return next(err)
@@ -50,13 +48,12 @@ export default {
 
         // TODO store image info into database
         const image = new Image({
-          assetId,
           path: storePath
         })
 
         await image.save()
 
-        return res.sendStatus(201)
+        return res.status(201).json(image)
       })
 
       ws.on('error', (err) => next(err))
