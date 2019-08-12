@@ -59,6 +59,7 @@ class Form extends React.Component {
 
     this.state = {
       asset: {
+        hash: this.props.asset.hash,
         name: this.props.asset.name,
         description: this.props.asset.description,
         price: this.props.asset.price,
@@ -82,31 +83,43 @@ class Form extends React.Component {
         images: arrayMove(asset.images, oldIndex, newIndex)
       }
     }))
+
+    this.triggerAutoSave()
+  }
+
+  triggerAutoSave() {
+    clearTimeout(this._backgroundSave)
+
+    this._backgroundSave = setTimeout(() => {
+      console.log('auto save asset...')
+
+      this.saveAsset()
+    }, 1e3)
   }
 
   render() {
+    const { asset } = this.state
+
     return (
       <div>
+        <div>{asset.hash}</div>
         <button type="button" onClick={this.publishAsset}>Publish</button>
         <Uploader
           onFileUploaded={ (image) => this.addAssetImage(image) }
         />
         <ImageList
           axis={'x'}
-          items={this.state.asset.images}
+          items={asset.images}
           onSortEnd={this.onSortEnd}
         />
-        <form onSubmit={this.saveAsset}>
-          <input type="text" value={this.state.asset.name}
-            onChange={ (e) => this.updateAssetState('name', e.target.value) }
-          />
-          <CKEditor
-            editor={ClassicEditor}
-            data={this.state.asset.description}
-            onChange={ (e, editor) => this.updateAssetState('description', editor.getData()) }
-          />
-          <button type="submit">Save</button>
-        </form>
+        <input type="text" value={asset.name}
+          onChange={ (e) => this.updateAssetState('name', e.target.value) }
+        />
+        <CKEditor
+          editor={ClassicEditor}
+          data={asset.description}
+          onChange={ (e, editor) => this.updateAssetState('description', editor.getData()) }
+        />
       </div>
     )
   }
@@ -119,17 +132,16 @@ class Form extends React.Component {
     return false
   }
 
-  async saveAsset(e) {
-    e.preventDefault()
-
+  async saveAsset() {
     // send ajax
-    await request.post(`/admin/assets/${this.props.asset._id}`)
+    const { body: asset } = await request.post(`/admin/assets/${this.props.asset._id}`)
       .send({
         id: this.props.asset._id,
-        ...this.state.asset
+        ...this.state.asset,
+        images: this.state.asset.images.map((image) => image._id)
       })
 
-    return false
+    this.setState({ asset })
   }
 
   updateAssetState(field, value) {
@@ -139,6 +151,8 @@ class Form extends React.Component {
         [field]: value
       }
     })
+
+    this.triggerAutoSave()
   }
 
   addAssetImage(image) {
@@ -151,6 +165,8 @@ class Form extends React.Component {
         ]
       }
     })
+
+    this.triggerAutoSave()
   }
 }
 

@@ -10,12 +10,12 @@ export default {
       const asset = new Asset({
         name: 'New Asset',
         description: 'This asset is newly created!',
-        images: []
+        images: [],
+        options: [],
+        price: 0
       })
 
       await asset.save()
-
-      // const latestData = await Asset.findById(asset._id).populate('images')
 
       res.redirect(`/admin/assets/${asset._id}`)
     }
@@ -30,30 +30,28 @@ export default {
         description: req.body.description,
         price: req.body.price,
         images: req.body.images
+      },{
+        w: 0
       })
 
-      const latestData = await Asset.findById(id).populate('images')
+      // populate images from array of _ids
+      const assetWithImages = await Asset.findById(id).populate('images')
 
-      res.json(latestData)
+      res.json(assetWithImages)
     }
   ],
   publish: async (req, res, next) => {
     const id = req.params.id
+    const asset = await Asset.findById(id)
 
-    const asset = await Asset.findById(id).lean()
+    asset.published = {
+      ...asset.getValues(),
+      hash: asset.hash
+    }
 
-    await Asset.findByIdAndUpdate(id, {
-      published: objectPick(asset, [
-        'images',
-        'name',
-        'description',
-        'price',
-        'createdAt',
-        'updatedAt'
-      ])
-    })
+    await asset.save()
 
-    return res.sendStatus(200)
+    return res.json(asset)
   },
   list: async (req, res, next) => {
     const assets = await Asset.find().populate('images')
