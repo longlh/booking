@@ -7,16 +7,16 @@ export default {
     bodyParser.json(),
     async (req, res, next) => {
       const asset = new Asset({
-        name: req.body.name,
-        description: req.body.description,
-        images: (req.body.images || []).map(i => i._id)
+        name: 'New Asset',
+        description: 'This asset is newly created!',
+        images: []
       })
 
       await asset.save()
 
-      const latestData = await Asset.findById(asset._id).populate('images')
+      // const latestData = await Asset.findById(asset._id).populate('images')
 
-      res.json(latestData)
+      res.redirect(`/admin/assets/${asset._id}`)
     }
   ],
   update: [
@@ -27,7 +27,8 @@ export default {
       await Asset.findByIdAndUpdate(id, {
         name: req.body.name,
         description: req.body.description,
-        price: req.body.price
+        price: req.body.price,
+        images: req.body.images
       })
 
       const latestData = await Asset.findById(id).populate('images')

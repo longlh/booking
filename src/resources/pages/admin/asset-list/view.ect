@@ -5,7 +5,9 @@
 <% end %>
 
 <h1>Assets</h1>
-
+<form action="/admin/assets" method="post">
+  <button type="submit">Create new asset</button>
+</form>
 <ul>
   <% for asset in @assets :%>
     <li>

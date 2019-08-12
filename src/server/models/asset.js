@@ -15,6 +15,8 @@ const schema = new mongoose.Schema({
   price: {
     type: Number
   }
+}, {
+  timestamps: true
 })
 
 export default mongoose.model('Asset', schema)

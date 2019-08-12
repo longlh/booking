@@ -11,12 +11,18 @@ const DropZone = styled.div`
 
 const FileList = ({
   files = [],
+  previews = {},
   onRemove
 }) => {
   return (
     <ul>
       { files.map((file) => (
         <li key={file.id}>
+          <img
+            src={previews[file.id]}
+            width={50}
+            height={50}
+           />
           <span>{file.name}</span>
           <button type="button"
             onClick={ () => onRemove(file.id) }>
@@ -33,7 +39,8 @@ class Uploader extends React.Component {
     super(...args)
 
     this.state = {
-      queue: []
+      queue: [],
+      previews: {}
     }
   }
 
@@ -43,7 +50,36 @@ class Uploader extends React.Component {
       drop_element: this.refs.dropzone,
       url: '/admin/images',
       chunk_size: '200kb',
-      unique_names: true
+      unique_names: true,
+      filters : {
+        prevent_duplicates: true
+      }
+    })
+
+    uploader.bind('FilesAdded', (uploader, files) => {
+      files.forEach((file) => {
+        const reader = new FileReader()
+        reader.onload = () => {
+          this.setState({
+            previews: {
+              ...this.state.previews,
+              [file.id]: reader.result
+            }
+          })
+        }
+
+        reader.readAsDataURL(file.getNative())
+      })
+    })
+
+    uploader.bind('FilesRemoved', (uploader, files) => {
+      const previews = files.reduce((state, file) => {
+        const { [file.id]: removed, ...reducedState } = state
+
+        return reducedState
+      }, this.state.previews)
+
+      this.setState({ previews })
     })
 
     // handle event
@@ -88,6 +124,7 @@ class Uploader extends React.Component {
         <DropZone ref="dropzone">
           <FileList
             files={this.state.queue}
+            previews={this.state.previews}
             onRemove={ (id) => {
               this._uploader.removeFile(id)
             } }

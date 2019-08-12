@@ -1,5 +1,8 @@
+import arrayMove from 'array-move'
 import React from 'react'
 import request from 'superagent'
+
+import { SortableContainer, SortableElement } from 'react-sortable-hoc'
 
 import CKEditor from '@ckeditor/ckeditor5-react'
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
@@ -12,6 +15,43 @@ const EditorWrapper = styled.div`
   border: 1px solid gray;
   padding: 8px;
 `
+
+const HorizalList = styled.ul`
+  li {
+    display: inline-block;
+  }
+
+  list-style: none;
+`
+
+const Image = styled.li`
+  list-style: none;
+  padding: 8px;
+`
+
+const SortableImage = SortableElement(({ value }) => (
+  <Image>
+    <img
+      src={`/upload/${value.path}`}
+      width={50}
+      height={50}
+    />
+  </Image>
+))
+
+const ImageList = SortableContainer(({ items = [] }) => {
+  return (
+    <HorizalList>
+      {items.map(
+        (image, index) => <SortableImage
+          key={`item-${index}`}
+          index={index}
+          value={image}
+        />
+      )}
+    </HorizalList>
+  )
+})
 
 class Form extends React.Component {
   constructor(...args) {
@@ -31,6 +71,16 @@ class Form extends React.Component {
     this.saveAsset = this.saveAsset.bind(this)
     this.updateAssetState = this.updateAssetState.bind(this)
     this.addAssetImage = this.addAssetImage.bind(this)
+    this.onSortEnd = this.onSortEnd.bind(this)
+  }
+
+  onSortEnd({ oldIndex, newIndex }) {
+    this.setState(({ asset }) => ({
+      asset: {
+        ...asset,
+        images: arrayMove(asset.images, oldIndex, newIndex)
+      }
+    }))
   }
 
   render() {
@@ -39,15 +89,11 @@ class Form extends React.Component {
         <Uploader
           onFileUploaded={ (image) => this.addAssetImage(image) }
         />
-        <ul>
-          { this.state.asset.images.map(
-            (image) => (
-              <li key={image._id}>
-                <img src={`/upload/${image.path}`} />
-              </li>
-            )
-          )}
-        </ul>
+        <ImageList
+          axis={'x'}
+          items={this.state.asset.images}
+          onSortEnd={this.onSortEnd}
+        />
         <CKEditor
           editor={ClassicEditor}
           data={this.state.asset.description}
