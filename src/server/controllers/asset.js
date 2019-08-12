@@ -1,4 +1,5 @@
 import bodyParser from 'body-parser'
+import objectPick from 'object.pick'
 
 import Asset from '@/models/asset'
 
@@ -36,6 +37,24 @@ export default {
       res.json(latestData)
     }
   ],
+  publish: async (req, res, next) => {
+    const id = req.params.id
+
+    const asset = await Asset.findById(id).lean()
+
+    await Asset.findByIdAndUpdate(id, {
+      published: objectPick(asset, [
+        'images',
+        'name',
+        'description',
+        'price',
+        'createdAt',
+        'updatedAt'
+      ])
+    })
+
+    return res.sendStatus(200)
+  },
   list: async (req, res, next) => {
     const assets = await Asset.find().populate('images')
 

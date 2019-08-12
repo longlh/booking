@@ -14,6 +14,9 @@ const schema = new mongoose.Schema({
   } ],
   price: {
     type: Number
+  },
+  published: {
+    type: mongoose.Schema.Types.Mixed
   }
 }, {
   timestamps: true

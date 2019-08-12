@@ -5,7 +5,7 @@ import styled from 'styled-components'
 const DropZone = styled.div`
   background: yellow;
   width: 640px;
-  height: 320px;
+  min-height: 128px;
   margin: 0 auto;
 `
 
@@ -20,8 +20,8 @@ const FileList = ({
         <li key={file.id}>
           <img
             src={previews[file.id]}
-            width={50}
-            height={50}
+            width={64}
+            height={64}
            />
           <span>{file.name}</span>
           <button type="button"
@@ -103,7 +103,7 @@ class Uploader extends React.Component {
     uploader.bind('UploadComplete', (uploader) => {
       uploader.files.length = 0
 
-      // uploader.trigger('QueueChanged')
+      uploader.trigger('QueueChanged')
     })
 
     uploader.init()

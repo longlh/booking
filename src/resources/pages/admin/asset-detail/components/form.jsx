@@ -33,8 +33,8 @@ const SortableImage = SortableElement(({ value }) => (
   <Image>
     <img
       src={`/upload/${value.path}`}
-      width={50}
-      height={50}
+      width={128}
+      height={128}
     />
   </Image>
 ))
@@ -68,6 +68,7 @@ class Form extends React.Component {
       }
     }
 
+    this.publishAsset = this.publishAsset.bind(this)
     this.saveAsset = this.saveAsset.bind(this)
     this.updateAssetState = this.updateAssetState.bind(this)
     this.addAssetImage = this.addAssetImage.bind(this)
@@ -86,6 +87,7 @@ class Form extends React.Component {
   render() {
     return (
       <div>
+        <button type="button" onClick={this.publishAsset}>Publish</button>
         <Uploader
           onFileUploaded={ (image) => this.addAssetImage(image) }
         />
@@ -94,20 +96,27 @@ class Form extends React.Component {
           items={this.state.asset.images}
           onSortEnd={this.onSortEnd}
         />
-        <CKEditor
-          editor={ClassicEditor}
-          data={this.state.asset.description}
-          onChange={ (e, editor) => this.updateAssetState('description', editor.getData()) }
-        />
         <form onSubmit={this.saveAsset}>
           <input type="text" value={this.state.asset.name}
             onChange={ (e) => this.updateAssetState('name', e.target.value) }
           />
+          <CKEditor
+            editor={ClassicEditor}
+            data={this.state.asset.description}
+            onChange={ (e, editor) => this.updateAssetState('description', editor.getData()) }
+          />
           <button type="submit">Save</button>
         </form>
-
       </div>
     )
+  }
+
+  async publishAsset(e) {
+    e.preventDefault()
+
+    await request.post(`/admin/assets/${this.props.asset._id}/publish`)
+
+    return false
   }
 
   async saveAsset(e) {

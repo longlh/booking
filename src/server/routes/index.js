@@ -19,6 +19,9 @@ export default {
     get: controllers.asset.view,
     post: controllers.asset.update
   },
+  '/admin/assets/:id/publish': {
+    post: controllers.asset.publish
+  },
   '/admin/images': {
     post: controllers.image.upload
   }
