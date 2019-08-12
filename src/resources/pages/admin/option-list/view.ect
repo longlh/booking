@@ -1,0 +1,16 @@
+<% extend 'admin/layout' %>
+
+<% block 'body-end' :%>
+  <script>
+  <!--
+    var OPTIONS = <%- JSON.stringify(@options) %>;
+  -->
+  </script>
+  <script src="<%= @__asset('admin/option-list.js') %>"></script>
+<% end %>
+
+<h1>Option List</h1>
+<form action="/admin/options" method="post">
+  <button type="submit">Create</button>
+</form>
+<div id="option-list"></div>

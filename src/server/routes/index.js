@@ -24,5 +24,13 @@ export default {
   },
   '/admin/images': {
     post: controllers.image.upload
+  },
+  '/admin/options': {
+    get: controllers.option.list,
+    post: controllers.option.create
+  },
+  '/admin/options/:id': {
+    put: controllers.option.update,
+    delete: controllers.option.remove
   }
 }
