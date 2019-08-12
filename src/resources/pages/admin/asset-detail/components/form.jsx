@@ -22,6 +22,9 @@ const HorizalList = styled.ul`
   }
 
   list-style: none;
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
 `
 
 const Image = styled.li`
@@ -60,11 +63,15 @@ class Form extends React.Component {
     this.state = {
       asset: {
         hash: this.props.asset.hash,
+        published: this.props.asset.published,
         name: this.props.asset.name,
         description: this.props.asset.description,
         price: this.props.asset.price,
         images: [
-          ...this.props.asset.images
+          ...(this.props.asset.images || [])
+        ],
+        options: [
+          ...(this.props.asset.options || [])
         ]
       }
     }
@@ -103,7 +110,9 @@ class Form extends React.Component {
     return (
       <div>
         <div>{asset.hash}</div>
-        <button type="button" onClick={this.publishAsset}>Publish</button>
+        <button type="button"
+          disabled={asset.published && asset.published.hash === asset.hash}
+          onClick={this.publishAsset}>Publish</button>
         <Uploader
           onFileUploaded={ (image) => this.addAssetImage(image) }
         />
@@ -127,9 +136,9 @@ class Form extends React.Component {
   async publishAsset(e) {
     e.preventDefault()
 
-    await request.post(`/admin/assets/${this.props.asset._id}/publish`)
+    const { body: asset } = await request.post(`/admin/assets/${this.props.asset._id}/publish`)
 
-    return false
+    this.setState({ asset })
   }
 
   async saveAsset() {

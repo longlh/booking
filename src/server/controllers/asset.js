@@ -51,7 +51,10 @@ export default {
 
     await asset.save()
 
-    return res.json(asset)
+    // populate images from array of _ids
+    const assetWithImages = await Asset.findById(id).populate('images')
+
+    res.json(assetWithImages)
   },
   list: async (req, res, next) => {
     const assets = await Asset.find().populate('images')
