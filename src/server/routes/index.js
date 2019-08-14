@@ -6,7 +6,12 @@ export default {
       res.render('home')
     }
   },
-  '/room/:id': {
+  '/rooms': {
+    get: (req, res, next) => {
+      res.render('rooms')
+    }
+  },
+  '/rooms/:id': {
     get: (req, res, next) => {
       res.render('room-detail')
     }

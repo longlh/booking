@@ -1,0 +1,8 @@
+window.$ = window.jQuery = require('jquery')
+window.AOS = require('aos')
+require('popper.js')
+require('bootstrap')
+require('jquery.easing')
+require('owl.carousel')
+require('magnific-popup')
+require('scrollax')

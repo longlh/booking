@@ -516,3 +516,37 @@ h5,
     stroke-dashoffset: -136px;
   }
 }
+
+.block-23 {
+  ul {
+    padding: 0;
+
+    li {
+
+      &,
+      >a {
+        display: table;
+        line-height: 1.5;
+        margin-bottom: 15px;
+      }
+
+      span {
+        color: rgba($white, .7);
+      }
+
+      .icon,
+      .text {
+        display: table-cell;
+        vertical-align: top;
+      }
+
+      .icon {
+        width: 40px;
+        font-size: 18px;
+        padding-top: 2px;
+        color: rgba($white, 1);
+      }
+
+    }
+  }
+}

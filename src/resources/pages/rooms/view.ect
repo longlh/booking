@@ -1,0 +1,138 @@
+<% extend 'layout' %>
+
+<% block 'head-end' :%>
+<link rel="stylesheet" href="<%= @__asset('rooms.css') %>">
+<% end %>
+
+<% block 'body-end' :%>
+<script src="<%= @__asset('rooms.js') %>"></script>
+<% end %>
+
+<% include '../elements/room-slider' %>
+
+<section class="ftco-section ftco-room">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="room-wrap ftco-animate">
+          <a href="room.html" class="img" style="background-image: url(<%= @__asset('img/room-1.jpg') %>);"></a>
+          <div class="text pt-4 pl-lg-5">
+            <h2><a href="room.html">Suite Room</a></h2>
+            <p class="rate">
+              <span class="icon-star"></span>
+              <span class="icon-star"></span>
+              <span class="icon-star"></span>
+              <span class="icon-star"></span>
+              <span class="icon-star-half-full"></span>
+            </p>
+            <p class="d-flex price-details align-items-center pt-3">
+              <span>Starting From</span>
+              <span class="price">$100<small>/ night</small></span>
+            </p>
+            <p><a href="#" class="btn-customize">Reserve A Room</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="room-wrap ftco-animate">
+          <a href="room.html" class="img" style="background-image: url(<%= @__asset('img/room-2.jpg') %>);"></a>
+          <div class="text pt-4 pl-lg-5">
+            <h2><a href="room.html">Family Room</a></h2>
+            <p class="rate">
+              <span class="icon-star"></span>
+              <span class="icon-star"></span>
+              <span class="icon-star"></span>
+              <span class="icon-star"></span>
+              <span class="icon-star-half-full"></span>
+            </p>
+            <p class="d-flex price-details align-items-center pt-3">
+              <span>Starting From</span>
+              <span class="price">$140<small>/ night</small></span>
+            </p>
+            <p><a href="#" class="btn-customize">Reserve A Room</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="room-wrap ftco-animate">
+          <a href="room.html" class="img" style="background-image: url(<%= @__asset('img/room-3.jpg') %>);"></a>
+          <div class="text pt-4 pl-lg-5">
+            <h2><a href="room.html">Deluxe Room</a></h2>
+            <p class="rate">
+              <span class="icon-star"></span>
+              <span class="icon-star"></span>
+              <span class="icon-star"></span>
+              <span class="icon-star"></span>
+              <span class="icon-star-half-full"></span>
+            </p>
+            <p class="d-flex price-details align-items-center pt-3">
+              <span>Starting From</span>
+              <span class="price">$130<small>/ night</small></span>
+            </p>
+            <p><a href="#" class="btn-customize">Reserve A Room</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="room-wrap ftco-animate">
+          <a href="room.html" class="img" style="background-image: url(<%= @__asset('img/room-4.jpg') %>);"></a>
+          <div class="text pt-4 pl-lg-5">
+            <h2><a href="room.html">Classic Room</a></h2>
+            <p class="rate">
+              <span class="icon-star"></span>
+              <span class="icon-star"></span>
+              <span class="icon-star"></span>
+              <span class="icon-star"></span>
+              <span class="icon-star-half-full"></span>
+            </p>
+            <p class="d-flex price-details align-items-center pt-3">
+              <span>Starting From</span>
+              <span class="price">$200<small>/ night</small></span>
+            </p>
+            <p><a href="#" class="btn-customize">Reserve A Room</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="room-wrap ftco-animate">
+          <a href="room.html" class="img" style="background-image: url(<%= @__asset('img/room-5.jpg') %>);"></a>
+          <div class="text pt-4 pl-lg-5">
+            <h2><a href="room.html">Superior Room</a></h2>
+            <p class="rate">
+              <span class="icon-star"></span>
+              <span class="icon-star"></span>
+              <span class="icon-star"></span>
+              <span class="icon-star"></span>
+              <span class="icon-star-half-full"></span>
+            </p>
+            <p class="d-flex price-details align-items-center pt-3">
+              <span>Starting From</span>
+              <span class="price">$120<small>/ night</small></span>
+            </p>
+            <p><a href="#" class="btn-customize">Reserve A Room</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="room-wrap ftco-animate">
+          <a href="room.html" class="img" style="background-image: url(<%= @__asset('img/room-6.jpg') %>);"></a>
+          <div class="text pt-4 pl-lg-5">
+            <h2><a href="room.html">Luxe Room</a></h2>
+            <p class="rate">
+              <span class="icon-star"></span>
+              <span class="icon-star"></span>
+              <span class="icon-star"></span>
+              <span class="icon-star"></span>
+              <span class="icon-star-half-full"></span>
+            </p>
+            <p class="d-flex price-details align-items-center pt-3">
+              <span>Starting From</span>
+              <span class="price">$500<small>/ night</small></span>
+            </p>
+            <p><a href="#" class="btn-customize">Reserve A Room</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
