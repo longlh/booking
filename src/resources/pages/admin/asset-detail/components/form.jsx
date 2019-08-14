@@ -89,9 +89,7 @@ class Form extends React.Component {
         ...asset,
         images: arrayMove(asset.images, oldIndex, newIndex)
       }
-    }))
-
-    this.triggerAutoSave()
+    }), () => this.triggerAutoSave())
   }
 
   triggerAutoSave() {
@@ -159,9 +157,7 @@ class Form extends React.Component {
         ...this.state.asset,
         [field]: value
       }
-    })
-
-    this.triggerAutoSave()
+    }, () => this.triggerAutoSave())
   }
 
   addAssetImage(image) {
@@ -173,9 +169,7 @@ class Form extends React.Component {
           image
         ]
       }
-    })
-
-    this.triggerAutoSave()
+    }, () => this.triggerAutoSave())
   }
 }
 
