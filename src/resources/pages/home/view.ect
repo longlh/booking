@@ -1,0 +1,15 @@
+<% extend 'layout' %>
+
+<% block 'head-end' :%>
+<link rel="stylesheet" href="<%= @__asset('home.css') %>">
+<% end %>
+
+<% block 'body-end' :%>
+<script src="<%= @__asset('home.js') %>"></script>
+<% end %>
+
+<% include 'home/elements/slider' %>
+
+<% include 'home/elements/rooms' %>
+
+<% include 'home/elements/about' %>

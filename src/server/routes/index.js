@@ -3,7 +3,12 @@ import * as controllers from '@/controllers'
 export default {
   '/': {
     get: (req, res, next) => {
-      res.render('lp')
+      res.render('home')
+    }
+  },
+  '/room/:id': {
+    get: (req, res, next) => {
+      res.render('room-detail')
     }
   },
   '/admin': {

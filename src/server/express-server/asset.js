@@ -7,9 +7,11 @@ import config from '@/infrastructure/config'
 export default async (app) => {
   const distDir = path.resolve(config._root, '../../data/dist')
   const assetDir = path.resolve(distDir, '/assets')
+  const libDir = path.resolve(config._root, '../../node_modules')
   const manifestPath = path.join(distDir,'manifest.json')
 
   app.use('/assets', express.static(assetDir))
+  app.use('/libs', express.static(libDir))
 
   const manifest = await fs.readJson(manifestPath)
   app.locals.__asset = (file) => manifest[file]
