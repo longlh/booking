@@ -11,10 +11,10 @@ const schema = new mongoose.Schema({
   description: {
     type: String
   },
-  images: [ {
+  images: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Image'
-  } ],
+  }],
   price: {
     type: Number
   },
@@ -22,14 +22,13 @@ const schema = new mongoose.Schema({
     type: mongoose.Schema.Types.Mixed
   },
   hash: {
-    type: String,
-    required: true
+    type: String
   }
 }, {
   timestamps: true
 })
 
-schema.methods.getValues = function() {
+schema.methods.getValues = function () {
   return objectPick(this, [
     'name',
     'description',
@@ -39,7 +38,7 @@ schema.methods.getValues = function() {
   ])
 }
 
-schema.pre('findOneAndUpdate', function(next) {
+schema.pre('findOneAndUpdate', function (next) {
   const assetValues = schema.methods.getValues.apply(this._update)
 
   // generate new hash

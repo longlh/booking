@@ -30,7 +30,7 @@ export default {
         description: req.body.description,
         price: req.body.price,
         images: req.body.images
-      },{
+      }, {
         w: 0
       })
 
@@ -67,7 +67,7 @@ export default {
     const id = req.params.id
 
     const asset = await Asset.findById(id).populate('images')
-
+    console.log(asset)
     res.render('admin/asset-detail', {
       asset
     })

@@ -2,9 +2,7 @@ import * as controllers from '@/controllers'
 
 export default {
   '/': {
-    get: (req, res, next) => {
-      res.render('home')
-    }
+    get: controllers.home.view
   },
   '/rooms': {
     get: (req, res, next) => {
