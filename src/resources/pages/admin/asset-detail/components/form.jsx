@@ -35,7 +35,7 @@ const Image = styled.li`
 const SortableImage = SortableElement(({ value }) => (
   <Image>
     <img
-      src={`/upload/${value.path}`}
+      src={`/upload/${value}`}
       width={128}
       height={128}
     />
@@ -144,8 +144,7 @@ class Form extends React.Component {
     const { body: asset } = await request.post(`/admin/assets/${this.props.asset._id}`)
       .send({
         id: this.props.asset._id,
-        ...this.state.asset,
-        images: this.state.asset.images.map((image) => image._id)
+        ...this.state.asset
       })
 
     this.setState({ asset })

@@ -25,19 +25,20 @@ export default {
     async (req, res, next) => {
       const id = req.params.id
 
-      await Asset.findByIdAndUpdate(id, {
+      const asset = await Asset.findByIdAndUpdate(id, {
         name: req.body.name,
         description: req.body.description,
         price: req.body.price,
         images: req.body.images
       }, {
-        w: 0
+        w: 0,
+        new: true
       })
 
       // populate images from array of _ids
-      const assetWithImages = await Asset.findById(id).populate('images')
+      // const assetWithImages = await Asset.findById(id).populate('images')
 
-      res.json(assetWithImages)
+      res.json(asset)
     }
   ],
   publish: async (req, res, next) => {
@@ -52,12 +53,12 @@ export default {
     await asset.save()
 
     // populate images from array of _ids
-    const assetWithImages = await Asset.findById(id).populate('images')
+    // const assetWithImages = await Asset.findById(id).populate('images')
 
-    res.json(assetWithImages)
+    res.json(asset)
   },
   list: async (req, res, next) => {
-    const assets = await Asset.find().populate('images')
+    const assets = await Asset.find().lean()
 
     res.render('admin/asset-list', {
       assets
@@ -66,8 +67,8 @@ export default {
   view: async (req, res, next) => {
     const id = req.params.id
 
-    const asset = await Asset.findById(id).populate('images')
-    console.log(asset)
+    const asset = await Asset.findById(id).lean()
+
     res.render('admin/asset-detail', {
       asset
     })

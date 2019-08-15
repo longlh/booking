@@ -3,7 +3,6 @@ import fs from 'fs-extra'
 import path from 'path'
 
 import config from '@/infrastructure/config'
-import Image from '@/models/image'
 
 const generateStorePath = (filename) => {
   const today = new Date()
@@ -34,7 +33,6 @@ export default {
 
       await fs.ensureDir(path.dirname(writeLocation))
 
-
       const rs = fs.createReadStream(tempPath)
       const ws = fs.createWriteStream(writeLocation, { flags: 'a' })
 
@@ -46,14 +44,9 @@ export default {
           return res.sendStatus(200)
         }
 
-        // TODO store image info into database
-        const image = new Image({
+        return res.status(201).json({
           path: storePath
         })
-
-        await image.save()
-
-        return res.status(201).json(image)
       })
 
       ws.on('error', (err) => next(err))

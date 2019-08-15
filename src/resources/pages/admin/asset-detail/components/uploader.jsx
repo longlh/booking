@@ -95,9 +95,9 @@ class Uploader extends React.Component {
       }
 
       // parse JSON
-      const response = JSON.parse(result.response)
+      const { path } = JSON.parse(result.response)
 
-      this.props.onFileUploaded(response)
+      this.props.onFileUploaded(path)
     })
 
     uploader.bind('UploadComplete', (uploader) => {

@@ -12,17 +12,18 @@ const schema = new mongoose.Schema({
     type: String
   },
   images: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Image'
-  }],
+    type: String
+  } ],
   price: {
     type: Number
   },
   published: {
-    type: mongoose.Schema.Types.Mixed
+    type: mongoose.Schema.Types.Mixed,
+    default: {}
   },
   hash: {
-    type: String
+    type: String,
+    default: ''
   }
 }, {
   timestamps: true
