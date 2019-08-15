@@ -1,6 +1,5 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~bootstrap/scss/variables';
-@import '~lightslider/dist/css/lightslider.min.css';
 @import 'sass/variable';
 @import 'sass/mixin';
 @import 'sass/layout';
@@ -187,6 +186,24 @@
   position: relative;
 }
 
+.contact-section {
+  .contact-info{
+    .con{
+      background: lighten($primary,25%);
+      width: 100%;
+    }
+    p{
+      a{
+        color: lighten($black,10%);
+      }
+      span{
+        font-weight: 500;
+        color: $black;
+      }
+    }
+  }
+}
+
 //COVER BG
 .hotel-img,
 .img,
@@ -227,42 +244,4 @@
 .mfp-with-zoom.mfp-removing .mfp-container,
 .mfp-with-zoom.mfp-removing.mfp-bg {
   opacity: 0;
-}
-
-.room-detail {
-  display: grid;
-  grid-template-columns: 40% 60%;
-
-  .img, .text {
-    width: 100%;
-  }
-
-  .img {
-    background-size: auto;
-    background-position: top;
-    overflow: hidden;
-  }
-
-  .lightSlider {
-    height: 300px;
-    overflow: hidden;
-
-    li img {
-      max-width: 100%;
-      width: auto;
-      height: auto;
-      max-height: 100%;
-    }
-  }
-
-  .lSGallery {
-    li {
-      height: 40px;
-    }
-
-    img {
-      width: 100%;
-      height: auto;
-    }
-  }
 }

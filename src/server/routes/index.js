@@ -5,13 +5,14 @@ export default {
     get: controllers.home.view
   },
   '/rooms': {
-    get: (req, res, next) => {
-      res.render('rooms')
-    }
+    get: controllers.room.list
   },
   '/rooms/:id': {
+    get: controllers.room.view
+  },
+  '/contact': {
     get: (req, res, next) => {
-      res.render('room-detail')
+      res.render('contact')
     }
   },
   '/admin': {
