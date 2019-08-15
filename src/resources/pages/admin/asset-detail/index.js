@@ -1,3 +1,7 @@
+import '@fortawesome/fontawesome-free/css/all'
+import '@fortawesome/fontawesome-free//js/all'
+import 'bulma/bulma.sass'
+
 import React from 'react'
 import { render } from 'react-dom'
 

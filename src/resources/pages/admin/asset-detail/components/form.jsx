@@ -4,8 +4,12 @@ import request from 'superagent'
 
 import { SortableContainer, SortableElement } from 'react-sortable-hoc'
 
+// import editor
 import CKEditor from '@ckeditor/ckeditor5-react'
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
+
+// import UI components
+import { Button, Container, Box, Title } from 'bloomer'
 
 import styled from 'styled-components'
 
@@ -106,11 +110,11 @@ class Form extends React.Component {
     const { asset } = this.state
 
     return (
-      <div>
-        <div>{asset.hash}</div>
-        <button type="button"
+      <Container>
+        <Title isSize={1}>{asset.hash}</Title>
+        <Button type="button"
           disabled={asset.published && asset.published.hash === asset.hash}
-          onClick={this.publishAsset}>Publish</button>
+          onClick={this.publishAsset}>Publish</Button>
         <Uploader
           onFileUploaded={ (image) => this.addAssetImage(image) }
         />
@@ -127,7 +131,7 @@ class Form extends React.Component {
           data={asset.description}
           onChange={ (e, editor) => this.updateAssetState('description', editor.getData()) }
         />
-      </div>
+      </Container>
     )
   }
 

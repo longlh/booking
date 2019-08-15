@@ -63,7 +63,7 @@ export default {
     })
   ],
   resolve: {
-    extensions: [ '.js', '.jsx', '.css', '.scss' ],
+    extensions: [ '.js', '.jsx', '.css', '.scss', '.sass' ],
     modules: [
       'node_modules',
       'src/resources'
@@ -94,7 +94,7 @@ export default {
         loader: 'css-loader'
       } ]
     }, {
-      test: /\.scss$/,
+      test: /\.(scss|sass)$/,
       use: [ {
         loader: MiniCssExtractPlugin.loader
       }, {
@@ -111,6 +111,17 @@ export default {
           publicPath: `${assetEndpoint}/assets`,
           emitFile: true,
           context: 'src/resources/img'
+        }
+      }
+    }, {
+      test: /.(eot|ttf|woff|woff2)$/,
+      use: {
+        loader: 'file-loader',
+        options: {
+          name: 'fonts/[path][name].[hash:6].[ext]',
+          publicPath: `${assetEndpoint}/assets`,
+          emitFile: true,
+          context: 'src/resources/fonts'
         }
       }
     } ]
