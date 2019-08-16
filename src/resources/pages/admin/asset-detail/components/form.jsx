@@ -10,7 +10,7 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
 
 // import UI components
 import 'semantic-ui-css/semantic.min.css'
-import { Button, Container, Grid, Header, Form, Image, List, TextArea } from 'semantic-ui-react'
+import { Button, Container, Divider, Grid, Header, Form, Image, List, Menu, Segment, TextArea } from 'semantic-ui-react'
 
 import Uploader from './uploader'
 
@@ -76,7 +76,7 @@ class AssetForm extends React.Component {
       console.log('auto save asset...')
 
       this.saveAsset()
-    }, 1e3)
+    }, 2e3)
   }
 
   render() {
@@ -84,6 +84,18 @@ class AssetForm extends React.Component {
 
     return (
       <Fragment>
+        <Container>
+          <Button primary floated='right'
+            disabled={asset.published && asset.published.hash === asset.hash}
+            onClick={this.publishAsset}>
+            Publish
+          </Button>
+          {asset.published && asset.published.hash && (
+            <Button floated='right'>Unpublish</Button>
+          )}
+          <Button negative floated='right'>Delete</Button>
+          <Divider hidden clearing />
+        </Container>
         <Grid container stackable columns={2}>
           <Grid.Column>
             <Form>
@@ -124,14 +136,6 @@ class AssetForm extends React.Component {
             />
           </Grid.Column>
         </Grid>
-        <Container>
-          <Header as="h3">{asset.hash}</Header>
-          <Button primary
-            disabled={asset.published && asset.published.hash === asset.hash}
-            onClick={this.publishAsset}>
-            Publish
-          </Button>
-         </Container>
       </Fragment>
     )
   }

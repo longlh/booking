@@ -4,10 +4,13 @@ import styled from 'styled-components'
 
 import { Button, Divider, Header, List, Icon, Image, Ref, Segment } from 'semantic-ui-react'
 
-const DropZone = styled.div`
-  background: yellow;
-  min-height: 128px;
-  margin: 0 auto;
+const Thumbnail = styled(Image)`
+  width: 36px;
+  height: 36px;
+`
+
+const NoBreakText = styled.span`
+  whitespace: nowrap;
 `
 
 const FileList = ({
@@ -24,12 +27,10 @@ const FileList = ({
               <Icon name='trash' />
             </Button>
           </List.Content>
-          <Image
-            height='36px'
-            src={previews[file.id]}
-            size='tiny'
-          />
-          <List.Content>{file.name}</List.Content>
+          <Thumbnail src={previews[file.id]} />
+          <List.Content>
+            <NoBreakText>{file.name}</NoBreakText>
+          </List.Content>
         </List.Item>
       )) }
     </List>
@@ -47,12 +48,8 @@ class Uploader extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.refs.xxx)
-
     const uploader = this._uploader = new plupload.Uploader({
       browse_button: this.refs.browserButton.ref.current,
-      // browse_button: this.refs.xxx,
-      // drop_element: this.refs.dropzone,
       url: '/admin/images',
       chunk_size: '200kb',
       unique_names: true,
@@ -131,7 +128,7 @@ class Uploader extends React.Component {
               onRemove={(id) => this._uploader.removeFile(id)}
             /> :
             <Header textAlign='center'>
-              No images are choosed to upload.
+              No images in upload queue.
             </Header>
           }
           <Segment.Inline>

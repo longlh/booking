@@ -18,10 +18,21 @@
     <% for asset in @assets :%>
       <a class="ui card" href="/admin/assets/<%= asset._id %>">
         <div class="image">
-          <img src="/upload/<%= asset.images[0] %>">
+          <% if (asset.images && asset.images.length > 0) :%>
+            <img src="/upload/<%= asset.images[0] %>">
+          <% else :%>
+            <img src="<%= @__asset('img/image-wireframe.png') %>">
+          <% end %>
         </div>
         <div class="content">
           <div class="header"><%= asset.name %></div>
+          <div class="meta">
+            <%= asset.published &&
+              (asset.published.hash == asset.hash && 'Published' || 'Draft') ||
+              'Unpublished'
+            %>
+          </div>
+          <div class="description"><%= asset.excerpt %></div>
         </div>
       </a>
     <% end %>

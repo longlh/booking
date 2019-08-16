@@ -48,7 +48,8 @@ app.use(
   webpackDevMiddleware(compiler, {
     publicPath: config.output.publicPath,
     watchOption: {
-      ignore: /node_modules/
+      ignore: /node_modules/,
+      aggregateTimeout: 10e3
     }
   }),
   webpackHotMiddleware(compiler, {
