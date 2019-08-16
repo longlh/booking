@@ -2,6 +2,12 @@
 
 <% block 'head-end' :%>
   <link rel="stylesheet" href="<%= @__asset('admin/asset-list.css') %>">
+  <style>
+    .image.fixed-height {
+      height: 240px;
+      overflow: hidden;
+    }
+  </style>
 <% end %>
 
 <% block 'body-end' :%>
@@ -17,7 +23,7 @@
   <div class="ui cards">
     <% for asset in @assets :%>
       <a class="ui card" href="/admin/assets/<%= asset._id %>">
-        <div class="image">
+        <div class="fixed-height image">
           <% if (asset.images && asset.images.length > 0) :%>
             <img src="/upload/<%= asset.images[0] %>">
           <% else :%>

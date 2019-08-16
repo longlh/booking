@@ -10,17 +10,17 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
 
 // import UI components
 import 'semantic-ui-css/semantic.min.css'
-import { Button, Container, Divider, Grid, Header, Form, Image, List, Menu, Segment, TextArea } from 'semantic-ui-react'
+import { Button, Card, Container, Divider, Grid, Header, Form, Icon, Image, List, Menu, Reveal, Segment, TextArea } from 'semantic-ui-react'
 
 import Uploader from './uploader'
 
 const SortableImage = SortableElement(({ value }) => (
-  <Image src={`/upload/${value}`} />
+  <Card image={`/upload/${value}`} />
 ))
 
 const ImageList = SortableContainer(({ items = [] }) => {
   return (
-    <Image.Group size='small'>
+    <Card.Group itemsPerRow={3}>
       {items.map(
         (image, index) => <SortableImage
           key={`item-${index}`}
@@ -28,7 +28,7 @@ const ImageList = SortableContainer(({ items = [] }) => {
           value={image}
         />
       )}
-    </Image.Group>
+    </Card.Group>
   )
 })
 

@@ -26,7 +26,9 @@ const schema = new mongoose.Schema({
   },
   hash: {
     type: String,
-    default: ''
+    default: function() {
+      return hash(new Date().toISOString())
+    }
   }
 }, {
   timestamps: true
