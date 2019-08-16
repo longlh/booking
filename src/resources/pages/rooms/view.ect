@@ -8,7 +8,7 @@
 <script src="<%= @__asset('rooms.js') %>"></script>
 <% end %>
 
-<% include '../elements/breadcrumb' %>
+<% include '../elements/breadcrumb', { title: 'Rooms', link: 'Rooms', __asset: @__asset } %>
 
 <section class="ftco-section ftco-room">
   <div class="container">
@@ -19,6 +19,9 @@
             <a href="/rooms/<%= asset.id %>" class="img" style="background-image: url(/upload/<%= asset.images[0] %>"></a>
             <div class="text pt-4 pl-lg-5">
               <h2><a href="/rooms/<%= asset.id %>"><%= asset.name %></a></h2>
+              <p class="d-flex price-details align-items-center pt-3">
+                <span><%= asset.excerpt %></span>
+              </p>
               <p><a href="/rooms/<%= asset.id %>" class="btn-customize">Reserve A Room</a></p>
             </div>
           </div>

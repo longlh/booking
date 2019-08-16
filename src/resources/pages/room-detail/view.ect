@@ -8,7 +8,7 @@
 <script src="<%= @__asset('room-detail.js') %>"></script>
 <% end %>
 
-<% include '../elements/breadcrumb' %>
+<% include '../elements/breadcrumb', { title: 'Room', link: @asset.name, __asset: @__asset } %>
 
 <section class="ftco-section ftco-room">
   <div class="container">
