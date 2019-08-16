@@ -1,6 +1,5 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~bootstrap/scss/variables';
-@import '~lightslider/dist/css/lightslider.min.css';
 @import 'sass/variable';
 @import 'sass/mixin';
 @import 'sass/layout';
@@ -231,7 +230,8 @@
 
 .room-detail {
   display: grid;
-  grid-template-columns: 40% 60%;
+  grid-template-columns: 500px 1fr;
+  grid-gap: 30px;
 
   .img, .text {
     width: 100%;
@@ -243,26 +243,29 @@
     overflow: hidden;
   }
 
-  .lightSlider {
-    height: 300px;
-    overflow: hidden;
+  .thumbs {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 5px;
+    margin-top: 10px;
+    width: 100%;
 
-    li img {
-      max-width: 100%;
-      width: auto;
-      height: auto;
-      max-height: 100%;
+    .thumb {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      height: 80px;
+      overflow: hidden;
+      background: #000;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
     }
   }
 
-  .lSGallery {
-    li {
-      height: 40px;
-    }
-
-    img {
-      width: 100%;
-      height: auto;
-    }
+  .zoom-img {
+    width: 500px;
   }
 }

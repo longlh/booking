@@ -8,6 +8,7 @@
 <script src="<%= @__asset('rooms.js') %>"></script>
 <% end %>
 
+<% include '../elements/navigation', { page: 'rooms' } %>
 <% include '../elements/breadcrumb', { title: 'Rooms', link: 'Rooms', __asset: @__asset } %>
 
 <section class="ftco-section ftco-room">
