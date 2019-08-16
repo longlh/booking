@@ -27,6 +27,7 @@ export default {
 
       const asset = await Asset.findByIdAndUpdate(id, {
         name: req.body.name,
+        excerpt: req.body.excerpt,
         description: req.body.description,
         price: req.body.price,
         images: req.body.images

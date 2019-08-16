@@ -1,5 +1,5 @@
 import arrayMove from 'array-move'
-import React from 'react'
+import React, { Fragment } from 'react'
 import request from 'superagent'
 
 import { SortableContainer, SortableElement } from 'react-sortable-hoc'
@@ -9,46 +9,23 @@ import CKEditor from '@ckeditor/ckeditor5-react'
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
 
 // import UI components
-import { Button, Container, Box, Title } from 'bloomer'
-
-import styled from 'styled-components'
+import 'semantic-ui-css/semantic.min.css'
+import { Button, Container, Header, Form, Image, List, TextArea } from 'semantic-ui-react'
 
 import Uploader from './uploader'
 
-const EditorWrapper = styled.div`
-  border: 1px solid gray;
-  padding: 8px;
-`
-
-const HorizalList = styled.ul`
-  li {
-    display: inline-block;
-  }
-
-  list-style: none;
-  white-space: nowrap;
-  overflow-x: auto;
-  overflow-y: hidden;
-`
-
-const Image = styled.li`
-  list-style: none;
-  padding: 8px;
-`
-
 const SortableImage = SortableElement(({ value }) => (
-  <Image>
-    <img
+  <List.Item>
+    <Image
       src={`/upload/${value}`}
-      width={128}
-      height={128}
+      size='small'
     />
-  </Image>
+  </List.Item>
 ))
 
 const ImageList = SortableContainer(({ items = [] }) => {
   return (
-    <HorizalList>
+    <List horizontal>
       {items.map(
         (image, index) => <SortableImage
           key={`item-${index}`}
@@ -56,11 +33,11 @@ const ImageList = SortableContainer(({ items = [] }) => {
           value={image}
         />
       )}
-    </HorizalList>
+    </List>
   )
 })
 
-class Form extends React.Component {
+class AssetForm extends React.Component {
   constructor(...args) {
     super(...args)
 
@@ -69,6 +46,7 @@ class Form extends React.Component {
         hash: this.props.asset.hash,
         published: this.props.asset.published,
         name: this.props.asset.name,
+        excerpt: this.props.asset.excerpt,
         description: this.props.asset.description,
         price: this.props.asset.price,
         images: [
@@ -110,28 +88,46 @@ class Form extends React.Component {
     const { asset } = this.state
 
     return (
-      <Container>
-        <Title isSize={1}>{asset.hash}</Title>
-        <Button type="button"
+      <Fragment>
+        <Header as="h3">{asset.hash}</Header>
+        <Button primary
           disabled={asset.published && asset.published.hash === asset.hash}
-          onClick={this.publishAsset}>Publish</Button>
+          onClick={this.publishAsset}>
+          Publish
+        </Button>
         <Uploader
-          onFileUploaded={ (image) => this.addAssetImage(image) }
+          onFileUploaded={(image) => this.addAssetImage(image)}
         />
         <ImageList
-          axis={'x'}
+          axis={'xy'}
           items={asset.images}
           onSortEnd={this.onSortEnd}
         />
-        <input type="text" value={asset.name}
-          onChange={ (e) => this.updateAssetState('name', e.target.value) }
-        />
-        <CKEditor
-          editor={ClassicEditor}
-          data={asset.description}
-          onChange={ (e, editor) => this.updateAssetState('description', editor.getData()) }
-        />
-      </Container>
+        <Form>
+          <Form.Field>
+            <label>Name</label>
+            <input type="text"
+              value={asset.name}
+              onChange={(e) => this.updateAssetState('name', e.target.value)}
+            />
+          </Form.Field>
+          <Form.Field>
+            <label>Excerpt</label>
+            <TextArea
+              value={asset.excerpt}
+              onChange={(e) => this.updateAssetState('excerpt', e.target.value)}
+             />
+          </Form.Field>
+          <Form.Field>
+            <label>Description</label>
+          </Form.Field>
+          <CKEditor
+            editor={ClassicEditor}
+            data={asset.description}
+            onChange={(e, editor) => this.updateAssetState('description', editor.getData())}
+          />
+         </Form>
+      </Fragment>
     )
   }
 
@@ -176,4 +172,4 @@ class Form extends React.Component {
   }
 }
 
-export default Form
+export default AssetForm

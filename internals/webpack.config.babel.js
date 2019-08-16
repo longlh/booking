@@ -118,10 +118,9 @@ export default {
       use: {
         loader: 'file-loader',
         options: {
-          name: 'fonts/[path][name].[hash:6].[ext]',
+          name: 'fonts/[name].[hash:6].[ext]',
           publicPath: `${assetEndpoint}/assets`,
-          emitFile: true,
-          context: 'src/resources/fonts'
+          emitFile: true
         }
       }
     } ]

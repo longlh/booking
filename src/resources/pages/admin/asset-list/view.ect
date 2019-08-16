@@ -1,17 +1,29 @@
 <% extend 'admin/layout' %>
 
+<% block 'head-end' :%>
+  <link rel="stylesheet" href="<%= @__asset('admin/asset-list.css') %>">
+<% end %>
+
 <% block 'body-end' :%>
   <script src="<%= @__asset('admin/asset-list.js') %>"></script>
 <% end %>
 
-<h1>Assets</h1>
-<form action="/admin/assets" method="post">
-  <button type="submit">Create new asset</button>
-</form>
-<ul>
-  <% for asset in @assets :%>
-    <li>
-      <a href="/admin/assets/<%= asset._id %>"><%= asset.name %></a>
-    </li>
-  <% end %>
-</ul>
+<main class="ui container">
+  <h1 class="ui header">Assets</h1>
+  <form action="/admin/assets" method="post">
+    <button class="ui primary button" type="submit">Create new asset</button>
+  </form>
+  <div class="ui hidden divider"></div>
+  <div class="ui cards">
+    <% for asset in @assets :%>
+      <a class="ui card" href="/admin/assets/<%= asset._id %>">
+        <div class="image">
+          <img src="/upload/<%= asset.images[0] %>">
+        </div>
+        <div class="content">
+          <div class="header"><%= asset.name %></div>
+        </div>
+      </a>
+    <% end %>
+  </div>
+</main>

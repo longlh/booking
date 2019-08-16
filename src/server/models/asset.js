@@ -8,6 +8,9 @@ const schema = new mongoose.Schema({
     type: String,
     required: true
   },
+  excerpt: {
+    type: String,
+  },
   description: {
     type: String
   },
@@ -32,6 +35,7 @@ const schema = new mongoose.Schema({
 schema.methods.getValues = function () {
   return objectPick(this, [
     'name',
+    'excerpt',
     'description',
     'price',
     'images',
