@@ -10,22 +10,17 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
 
 // import UI components
 import 'semantic-ui-css/semantic.min.css'
-import { Button, Container, Header, Form, Image, List, TextArea } from 'semantic-ui-react'
+import { Button, Container, Grid, Header, Form, Image, List, TextArea } from 'semantic-ui-react'
 
 import Uploader from './uploader'
 
 const SortableImage = SortableElement(({ value }) => (
-  <List.Item>
-    <Image
-      src={`/upload/${value}`}
-      size='small'
-    />
-  </List.Item>
+  <Image src={`/upload/${value}`} />
 ))
 
 const ImageList = SortableContainer(({ items = [] }) => {
   return (
-    <List horizontal>
+    <Image.Group size='small'>
       {items.map(
         (image, index) => <SortableImage
           key={`item-${index}`}
@@ -33,7 +28,7 @@ const ImageList = SortableContainer(({ items = [] }) => {
           value={image}
         />
       )}
-    </List>
+    </Image.Group>
   )
 })
 
@@ -89,44 +84,53 @@ class AssetForm extends React.Component {
 
     return (
       <Fragment>
-        <Header as="h3">{asset.hash}</Header>
-        <Button primary
-          disabled={asset.published && asset.published.hash === asset.hash}
-          onClick={this.publishAsset}>
-          Publish
-        </Button>
-        <Uploader
-          onFileUploaded={(image) => this.addAssetImage(image)}
-        />
-        <ImageList
-          axis={'xy'}
-          items={asset.images}
-          onSortEnd={this.onSortEnd}
-        />
-        <Form>
-          <Form.Field>
-            <label>Name</label>
-            <input type="text"
-              value={asset.name}
-              onChange={(e) => this.updateAssetState('name', e.target.value)}
+        <Grid container stackable columns={2}>
+          <Grid.Column>
+            <Form>
+              <Form.Field>
+                <label>Name</label>
+                <input type="text"
+                  value={asset.name}
+                  onChange={(e) => this.updateAssetState('name', e.target.value)}
+                />
+              </Form.Field>
+              <Form.Field>
+                <label>Excerpt</label>
+                <TextArea
+                  rows={3}
+                  value={asset.excerpt}
+                  onChange={(e) => this.updateAssetState('excerpt', e.target.value)}
+                 />
+              </Form.Field>
+              <Form.Field>
+                <label>Description</label>
+              </Form.Field>
+              <CKEditor
+                editor={ClassicEditor}
+                data={asset.description}
+                onChange={(e, editor) => this.updateAssetState('description', editor.getData())}
+              />
+             </Form>
+          </Grid.Column>
+          <Grid.Column>
+            <Uploader
+              onFileUploaded={(image) => this.addAssetImage(image)}
             />
-          </Form.Field>
-          <Form.Field>
-            <label>Excerpt</label>
-            <TextArea
-              value={asset.excerpt}
-              onChange={(e) => this.updateAssetState('excerpt', e.target.value)}
-             />
-          </Form.Field>
-          <Form.Field>
-            <label>Description</label>
-          </Form.Field>
-          <CKEditor
-            editor={ClassicEditor}
-            data={asset.description}
-            onChange={(e, editor) => this.updateAssetState('description', editor.getData())}
-          />
-         </Form>
+            <ImageList
+              axis='xy'
+              items={asset.images}
+              onSortEnd={this.onSortEnd}
+            />
+          </Grid.Column>
+        </Grid>
+        <Container>
+          <Header as="h3">{asset.hash}</Header>
+          <Button primary
+            disabled={asset.published && asset.published.hash === asset.hash}
+            onClick={this.publishAsset}>
+            Publish
+          </Button>
+         </Container>
       </Fragment>
     )
   }

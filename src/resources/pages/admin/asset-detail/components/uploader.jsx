@@ -1,10 +1,11 @@
 import plupload from 'plupload'
-import React from 'react'
+import React, { Fragment } from 'react'
 import styled from 'styled-components'
+
+import { Button, Header, Icon, Ref, Segment } from 'semantic-ui-react'
 
 const DropZone = styled.div`
   background: yellow;
-  width: 640px;
   min-height: 128px;
   margin: 0 auto;
 `
@@ -45,9 +46,12 @@ class Uploader extends React.Component {
   }
 
   componentDidMount() {
+    console.log(this.refs.xxx)
+
     const uploader = this._uploader = new plupload.Uploader({
-      browse_button: this.refs.browseButton,
-      drop_element: this.refs.dropzone,
+      browse_button: this.refs.browserButton.ref.current,
+      // browse_button: this.refs.xxx,
+      // drop_element: this.refs.dropzone,
       url: '/admin/images',
       chunk_size: '200kb',
       unique_names: true,
@@ -117,20 +121,27 @@ class Uploader extends React.Component {
 
   render() {
     return (
-      <div>
-        <h2>Uploader</h2>
-        <button type="button" ref="browseButton">Choose files</button>
-        <button type="button" onClick={ () => this._uploader.start() }>Upload</button>
-        <DropZone ref="dropzone">
-          <FileList
-            files={this.state.queue}
-            previews={this.state.previews}
-            onRemove={ (id) => {
-              this._uploader.removeFile(id)
-            } }
-          />
-        </DropZone>
-      </div>
+      <Fragment>
+        <Segment placeholder>
+          {this.state.queue && this.state.queue.length > 0 ?
+            <FileList
+              files={this.state.queue}
+              previews={this.state.previews}
+              onRemove={(id) => this._uploader.removeFile(id)}
+            /> :
+            <Header icon>
+              <Icon name='file image outline' size='tiny' />
+              No images are choosed to upload.
+            </Header>
+          }
+          <Button.Group>
+            <Button ref="browserButton">Choose images</Button>
+            {this.state.queue && this.state.queue.length > 0 &&
+              <Button primary onClick={() => this._uploader.start()}>Upload</Button>
+            }
+          </Button.Group>
+        </Segment>
+      </Fragment>
     )
   }
 }
