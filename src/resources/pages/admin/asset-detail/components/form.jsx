@@ -12,23 +12,42 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
 import 'semantic-ui-css/semantic.min.css'
 import { Button, Card, Container, Divider, Grid, Header, Form, Icon, Image, List, Menu, Reveal, Segment, TextArea } from 'semantic-ui-react'
 
+import styled from 'styled-components'
+
 import Uploader from './uploader'
 
-const SortableImage = SortableElement(({ value }) => (
-  <Card image={`/upload/${value}`} />
+const Thumbnail = styled(Image)`
+  line-height: 150px;
+  overflow: hidden;
+  background-image: ${({ image }) => `url(${image})`};
+  background-size: cover;
+  display: inline-block;
+  text-align: center;
+`
+
+Thumbnail.Content = styled.div`
+  margin-left: -999px;
+  margin-right: 999px;
+`
+
+const SortableImage = SortableElement(({ value, onRemove }) => (
+    <Thumbnail image={`/upload/${value}`}>
+      <Button negative icon='trash' circular onClick={onRemove} />
+    </Thumbnail>
 ))
 
-const ImageList = SortableContainer(({ items = [] }) => {
+const ImageList = SortableContainer(({ items = [], onRemove }) => {
   return (
-    <Card.Group itemsPerRow={3}>
+    <Image.Group size='small'>
       {items.map(
         (image, index) => <SortableImage
           key={`item-${index}`}
           index={index}
           value={image}
+          onRemove={() => onRemove(index)}
         />
       )}
-    </Card.Group>
+    </Image.Group>
   )
 })
 
@@ -57,6 +76,7 @@ class AssetForm extends React.Component {
     this.saveAsset = this.saveAsset.bind(this)
     this.updateAssetState = this.updateAssetState.bind(this)
     this.addAssetImage = this.addAssetImage.bind(this)
+    this.removeAssetImage = this.removeAssetImage.bind(this)
     this.onSortEnd = this.onSortEnd.bind(this)
   }
 
@@ -130,9 +150,12 @@ class AssetForm extends React.Component {
             />
             <ImageList
               axis='xy'
+              pressDelay={200}
+              lockToContainerEdges={true}
               transitionDuration={0}
               items={asset.images}
               onSortEnd={this.onSortEnd}
+              onRemove={this.removeAssetImage}
             />
           </Grid.Column>
         </Grid>
@@ -176,6 +199,17 @@ class AssetForm extends React.Component {
           ...this.state.asset.images,
           image
         ]
+      }
+    }, () => this.triggerAutoSave())
+  }
+
+  removeAssetImage(index) {
+    console.log('xxx', index)
+
+    this.setState({
+      asset: {
+        ...this.state.asset,
+        images: this.state.asset.images.filter((image, i) => i !== index)
       }
     }, () => this.triggerAutoSave())
   }
