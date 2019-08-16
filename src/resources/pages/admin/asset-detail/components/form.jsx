@@ -118,6 +118,7 @@ class AssetForm extends React.Component {
             />
             <ImageList
               axis='xy'
+              transitionDuration={0}
               items={asset.images}
               onSortEnd={this.onSortEnd}
             />

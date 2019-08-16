@@ -2,7 +2,7 @@ import plupload from 'plupload'
 import React, { Fragment } from 'react'
 import styled from 'styled-components'
 
-import { Button, Header, Icon, Ref, Segment } from 'semantic-ui-react'
+import { Button, Divider, Header, List, Icon, Image, Ref, Segment } from 'semantic-ui-react'
 
 const DropZone = styled.div`
   background: yellow;
@@ -16,22 +16,23 @@ const FileList = ({
   onRemove
 }) => {
   return (
-    <ul>
+    <List verticalAlign='middle'>
       { files.map((file) => (
-        <li key={file.id}>
-          <img
+        <List.Item key={file.id}>
+          <List.Content floated='right'>
+            <Button icon onClick={() => onRemove(file.id)}>
+              <Icon name='trash' />
+            </Button>
+          </List.Content>
+          <Image
+            height='36px'
             src={previews[file.id]}
-            width={64}
-            height={64}
-           />
-          <span>{file.name}</span>
-          <button type="button"
-            onClick={ () => onRemove(file.id) }>
-            Remove
-           </button>
-        </li>
+            size='tiny'
+          />
+          <List.Content>{file.name}</List.Content>
+        </List.Item>
       )) }
-    </ul>
+    </List>
   )
 }
 
@@ -129,17 +130,16 @@ class Uploader extends React.Component {
               previews={this.state.previews}
               onRemove={(id) => this._uploader.removeFile(id)}
             /> :
-            <Header icon>
-              <Icon name='file image outline' size='tiny' />
+            <Header textAlign='center'>
               No images are choosed to upload.
             </Header>
           }
-          <Button.Group>
+          <Segment.Inline>
             <Button ref="browserButton">Choose images</Button>
-            {this.state.queue && this.state.queue.length > 0 &&
+            {this.state.queue && this.state.queue.length > 0 && (
               <Button primary onClick={() => this._uploader.start()}>Upload</Button>
-            }
-          </Button.Group>
+            )}
+          </Segment.Inline>
         </Segment>
       </Fragment>
     )
