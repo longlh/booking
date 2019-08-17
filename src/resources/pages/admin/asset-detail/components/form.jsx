@@ -9,12 +9,11 @@ import CKEditor from '@ckeditor/ckeditor5-react'
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
 
 // import UI components
-import 'semantic-ui-css/semantic.min.css'
 import { Button, Card, Container, Divider, Grid, Header, Form, Icon, Image, List, Menu, Reveal, Segment, TextArea } from 'semantic-ui-react'
 
 import styled from 'styled-components'
 
-import Uploader from './uploader'
+import Uploader from 'elements/uploader'
 
 const Thumbnail = styled(Image)`
   line-height: 150px;
@@ -136,12 +135,19 @@ class AssetForm extends React.Component {
               </Form.Field>
               <Form.Field>
                 <label>Description</label>
+                <CKEditor
+                  editor={ClassicEditor}
+                  data={asset.description}
+                  onChange={(e, editor) => this.updateAssetState('description', editor.getData())}
+                />
               </Form.Field>
-              <CKEditor
-                editor={ClassicEditor}
-                data={asset.description}
-                onChange={(e, editor) => this.updateAssetState('description', editor.getData())}
-              />
+              <Form.Field>
+                <label>Price</label>
+                <input type="text"
+                  value={asset.price}
+                  onChange={(e) => this.updateAssetState('price', e.target.value)}
+                />
+              </Form.Field>
              </Form>
           </Grid.Column>
           <Grid.Column>

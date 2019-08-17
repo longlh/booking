@@ -1,5 +1,6 @@
 export { default as asset } from './asset'
+export { default as home } from './home'
 export { default as image } from './image'
 export { default as option } from './option'
-export { default as home } from './home'
 export { default as room } from './room'
+export { default as setting } from './setting'
