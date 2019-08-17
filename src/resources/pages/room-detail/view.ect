@@ -8,12 +8,37 @@
 <script src="<%= @__asset('room-detail.js') %>"></script>
 <% end %>
 
-<% include '../elements/room-slider' %>
+<% include '../elements/navigation', { page: 'room-detail' } %>
+<% include '../elements/breadcrumb', { title: 'Room', link: @asset.name, __asset: @__asset } %>
 
 <section class="ftco-section ftco-room">
   <div class="container">
-    <div class="row">
+    <div class="room-detail">
+      <div class="img">
+        <img class="zoom-img"
+          id="zoom_03"
+          src="/upload/<%= @asset.images[0] %>"
+          data-zoom-image="/upload/<%= @asset.images[0] %>"
+        />
 
+        <div id="gallery_01" class="thumbs">
+          <% for image in @asset.images : %>
+            <a href="#"
+              class="thumb active"
+              data-update=""
+              data-image="/upload/<%= image %>"
+              data-zoom-image="/upload/<%= image %>">
+              <img src="/upload/<%= image %>" width="100"/>
+            </a>
+          <% end %>
+        </div>
+      </div>
+      <div class="text p-5">
+        <h2><%= @asset.name %></h2>
+        <div>
+          <%- @asset.description %>
+        </div>
+      </div>
     </div>
   </div>
 </section>

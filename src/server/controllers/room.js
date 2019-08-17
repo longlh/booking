@@ -1,7 +1,7 @@
 import Asset from '@/models/asset'
 
 export default {
-  view: [
+  list: [
     async (req, res, next) => {
       const assets = await Asset.find()
 
@@ -13,7 +13,16 @@ export default {
       next()
     },
     (req, res, next) => {
-      res.render('home')
+      res.render('rooms')
     }
-  ]
+  ],
+  view: async (req, res, next) => {
+    const id = req.params.id
+
+    const asset = await Asset.findById(id).lean()
+    console.log(asset)
+    res.render('room-detail', {
+      asset
+    })
+  }
 }
