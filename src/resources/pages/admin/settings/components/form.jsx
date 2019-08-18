@@ -53,53 +53,58 @@ class SettingForm extends React.Component {
 
   render() {
     return (
-      <Fragment>
-        <Container>
-          <Button primary floated='right'
-            onClick={null}>
-            Save
-          </Button>
-        </Container>
-        <Form>
-          <Grid container stackable columns={2}>
-            <Grid.Column>
-              <Form.Field>
-                <label>Title</label>
-                <input type="text"
-                  value={this.state.title}
-                  onChange={this.syncState.bind(this, 'title')}
-                />
-                <p>The name of your site</p>
-              </Form.Field>
-              <Form.Field>
-                <label>Description</label>
-                <input type="text"
-                  value={this.state.description}
-                  onChange={this.syncState.bind(this, 'description')}
-                />
-                <p>Used in your theme, meta data and search results</p>
-              </Form.Field>
-              <Form.Field>
-                <label>Contact Email</label>
-                <input type="text"
-                  value={this.state.email}
-                  onChange={this.syncState.bind(this, 'email')}
-                />
-                <p>Used for notification</p>
-              </Form.Field>
-            </Grid.Column>
-            <Grid.Column>
-              <Form.Field>
-                <label>Introduction Images</label>
-                <Uploader
-                  onFileUploaded={(image) => null}
-                />
-                <p>Used in image slider at your landing page</p>
-              </Form.Field>
-            </Grid.Column>
-          </Grid>
-        </Form>
-      </Fragment>
+      <Form>
+        <Grid container stackable columns={2}>
+          <Grid.Column>
+            <Form.Field>
+              <label>Title</label>
+              <input type="text"
+                value={this.state.title}
+                onChange={this.syncState.bind(this, 'title')}
+              />
+              <p>The name of your site</p>
+            </Form.Field>
+            <Form.Field>
+              <label>Description</label>
+              <input type="text"
+                value={this.state.description}
+                onChange={this.syncState.bind(this, 'description')}
+              />
+              <p>Used in your theme, meta data and search results</p>
+            </Form.Field>
+            <Form.Field>
+              <label>Contact Email</label>
+              <input type="text"
+                value={this.state.email}
+                onChange={this.syncState.bind(this, 'email')}
+              />
+            </Form.Field>
+            <Form.Field>
+              <label>Contact Phone</label>
+              <input type="text"
+                value={this.state.phone}
+                onChange={this.syncState.bind(this, 'phone')}
+              />
+            </Form.Field>
+            <Form.Field>
+              <label>Contact Address</label>
+              <input type="text"
+                value={this.state.address}
+                onChange={this.syncState.bind(this, 'address')}
+              />
+            </Form.Field>
+          </Grid.Column>
+          <Grid.Column>
+            <Form.Field>
+              <label>Introduction Images</label>
+              <Uploader
+                onFileUploaded={(image) => null}
+              />
+              <p>Used in image slider at your landing page</p>
+            </Form.Field>
+          </Grid.Column>
+        </Grid>
+      </Form>
     )
   }
 }

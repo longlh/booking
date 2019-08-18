@@ -11,9 +11,7 @@ export default {
     get: controllers.room.view
   },
   '/contact': {
-    get: (req, res, next) => {
-      res.render('contact')
-    }
+    get: controllers.contact.view
   },
   '/admin': {
     get: (req, res, next) => {

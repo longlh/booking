@@ -4,13 +4,14 @@
       <div class="col-md-7 heading-section ftco-animate text-center">
         <span class="subheading">Rooms</span>
         <h2 class="mb-4">Book A Room</h2>
-        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind
-          texts. Separated they live in</p>
+        <p><%= @settings.description %></p>
       </div>
     </div>
     <div class="carousel-rooms owl-carousel ftco-animate">
-      <% for asset in @assets : %>
-        <% include 'home/elements/room-item', { asset: asset } %>
+      <% for asset in @assets :%>
+        <% include 'home/elements/room-item', {
+          asset: asset
+        } %>
       <% end %>
     </div>
   </div>

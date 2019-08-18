@@ -1,7 +1,10 @@
 import Asset from '@/models/asset'
 
+import getSettings from './middlewares/get-settings'
+
 export default {
   list: [
+    getSettings,
     async (req, res, next) => {
       const assets = await Asset.find()
 
@@ -16,13 +19,16 @@ export default {
       res.render('rooms')
     }
   ],
-  view: async (req, res, next) => {
-    const id = req.params.id
+  view: [
+    getSettings,
+    async (req, res, next) => {
+      const id = req.params.id
 
-    const asset = await Asset.findById(id).lean()
-    console.log(asset)
-    res.render('room-detail', {
-      asset
-    })
-  }
+      const asset = await Asset.findById(id).lean()
+      console.log(asset)
+      res.render('room-detail', {
+        asset
+      })
+    }
+  ]
 }
