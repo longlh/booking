@@ -84,7 +84,7 @@
     "dev-server": "run.env nodemon ./internals/dev-server --exec babel-node --watch ./internals",
     "server": "run.env nodemon ./src/server --exec babel-node --watch ./src/server --watch ./data/dist/manifest.json",
     "webpack": "webpack --config ./internals/webpack.config.babel.js",
-    "build": "rm -rf ./build && mkdir -p ./build/resources/pages && babel ./src/server -d ./build/server && cp -r ./src/resources/pages ./build/resources"
+    "build": "rm -rf ./build && mkdir -p ./build/resources/pages && mkdir -p ./buidl/resources/elements && babel ./src/server -d ./build/server && cp -r ./src/resources/pages ./build/resources && cp -r ./src/resoures/elements ./build/resources"
   },
   "repository": {
     "type": "git",
