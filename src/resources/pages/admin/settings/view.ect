@@ -1,0 +1,16 @@
+<% extend 'admin/layout' %>
+
+<% block 'head-end' :%>
+  <link rel="stylesheet" href="<%= @__asset('admin/settings.css') %>">
+<% end %>
+
+<% block 'body-end' :%>
+  <script>
+  <!--
+    var SETTINGS = <%- JSON.stringify(@settings) %>;
+  -->
+  </script>
+  <script src="<%= @__asset('admin/settings.js') %>"></script>
+<% end %>
+
+<main class="ui basic segment" id="setting-form"></main>

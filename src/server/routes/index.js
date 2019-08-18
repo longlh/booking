@@ -1,7 +1,5 @@
 import * as controllers from '@/controllers'
 
-console.log(controllers)
-
 export default {
   '/': {
     get: controllers.home.view
@@ -44,8 +42,10 @@ export default {
     put: controllers.option.update,
     delete: controllers.option.remove
   },
-  '/admin/setting': {
-    get: controllers.setting.view,
+  '/admin/settings': {
+    get: controllers.setting.view
+  },
+  '/admin/settings/:name': {
     post: controllers.setting.update
   }
 }
