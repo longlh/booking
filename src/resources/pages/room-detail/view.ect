@@ -40,11 +40,16 @@
           <% end %>
         </div>
       </div>
-      <div class="text p-5">
+      <div class="text">
         <h2><%= @asset.name %></h2>
         <div>
           <%- @asset.description %>
         </div>
+      </div>
+    </div>
+    <div class="row room-contact">
+      <div class="col-md-6">
+        <% include '../elements/contact-form' %>
       </div>
     </div>
   </div>

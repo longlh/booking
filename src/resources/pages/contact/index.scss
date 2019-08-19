@@ -4,58 +4,9 @@
 @import 'sass/mixin';
 @import 'sass/layout';
 @import 'sass/slider';
+@import 'sass/contact-form';
 
 //BUTTON
-.btn {
-  cursor: pointer;
-  @include border-radius(30px);
-  box-shadow: none!important;
-  &:hover, &:active, &:focus {
-    outline: none;
-  }
-  &.btn-primary {
-    background: $primary;
-    border: 1px solid $primary;
-    color: $white;
-    &:hover {
-      border: 1px solid $primary;
-      background: transparent;
-      color :$primary;
-    }
-    &.btn-outline-primary {
-      border: 1px solid $primary;
-      background: transparent;
-      color :$primary;
-      &:hover {
-        border: 1px solid transparent;
-        background: $primary;
-        color :$white;
-      }
-    }
-  }
-  &.btn-white {
-    background: $white;
-    border: 1px solid $white;
-    color: $black;
-    &:hover, &:focus, &:active {
-      border: 1px solid $white;
-      color :$primary;
-    }
-    &.btn-outline-white {
-      border-color: rgba($white, .8);
-      background: none;
-      @include border-radius(30px);
-      border-width: 1px;
-      color: $white;
-      &:hover, &:focus, &:active {
-        background: $white;
-        border-color: $white;
-        color: $primary;
-      }
-    }
-  }
-}
-
 .btn-customize {
   position: relative;
   border: none;
@@ -236,24 +187,6 @@
   position: relative;
 }
 
-.contact-section {
-  .contact-info{
-    .con{
-      background: lighten($primary,25%);
-      width: 100%;
-    }
-    p{
-      a{
-        color: lighten($black,10%);
-      }
-      span{
-        font-weight: 500;
-        color: $black;
-      }
-    }
-  }
-}
-
 //COVER BG
 .hotel-img,
 .img,
@@ -294,29 +227,4 @@
 .mfp-with-zoom.mfp-removing .mfp-container,
 .mfp-with-zoom.mfp-removing.mfp-bg {
   opacity: 0;
-}
-
-.form-control {
-  height: 52px!important;
-  background: $white!important;
-  color: $black!important;
-  font-size: 18px;
-  border-radius: 0px;
-  box-shadow: none!important;
-  border: 1px solid lighten($black,90%);
-  &:focus, &:active {
-    border-color: $black;
-  }
-}
-textarea.form-control {
-  height: inherit!important;
-}
-.block-9 {
-  .form-control {
-    outline: none!important;
-    box-shadow: none!important;
-    font-size: 15px;
-  }
-  #map {
-  }
 }

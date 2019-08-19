@@ -7,6 +7,9 @@ require('ez-plus')
     gallery: 'gallery_01',
     cursor: 'pointer',
     galleryActiveClass: 'active',
-    imageCrossfade: true
+    // imageCrossfade: true,
+    responsive : true,
+    scrollZoom : false,
+    showLens: true
   })
 })();
