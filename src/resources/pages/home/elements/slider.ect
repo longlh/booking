@@ -8,22 +8,13 @@
   </div>
   <div class="third js-fullheight">
     <section class="home-slider owl-carousel js-fullheight">
-      <div class="slider-item js-fullheight" style="background-image: url(<%= @__asset('img/bg_1.jpg') %>)">
-        <div class="overlay"></div>
-      </div>
-
-      <div class="slider-item js-fullheight" style="background-image: url(<%= @__asset('img/bg_2.jpg') %>)">
-        <div class="overlay"></div>
-      </div>
-
-      <div class="slider-item js-fullheight" style="background-image: url(<%= @__asset('img/bg_3.jpg') %>)">
-        <div class="overlay"></div>
-      </div>
-
-      <div class="slider-item js-fullheight" style="background-image: url(<%= @__asset('img/bg_4.jpg') %>)">
-        <div class="overlay"></div>
-      </div>
+      <% if @settings.slider : %>
+        <% for image in @settings.slider : %>
+          <div class="slider-item js-fullheight" style="background-image: url(/upload/<%= image %>)">
+            <div class="overlay"></div>
+          </div>
+        <% end %>
+      <% end %>
     </section>
-
   </div>
 </section>

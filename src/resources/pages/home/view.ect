@@ -13,7 +13,9 @@
   settings: @settings
 } %>
 
-<% include 'home/elements/slider' %>
+<% include 'home/elements/slider', {
+  settings: @settings
+} %>
 
 <% include 'home/elements/rooms', {
   assets: @assets,

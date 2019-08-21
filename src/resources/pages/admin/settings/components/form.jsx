@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react'
 import request from 'superagent'
+import arrayMove from 'array-move'
 
 import {
   Button,
@@ -10,13 +11,17 @@ import {
 } from 'semantic-ui-react'
 
 import Uploader from 'elements/uploader'
+import ImageList from 'elements/image-list'
 
 class SettingForm extends React.Component {
   constructor(...args) {
     super(...args)
 
     this.state = {
-      ...this.props.initial
+      ...this.props.initial,
+      slider: [
+        ...(this.props.initial.slider || [])
+      ]
     }
 
     this._autoSaves = {}
@@ -49,6 +54,27 @@ class SettingForm extends React.Component {
     this.setState({
       [name]: setting.value
     })
+  }
+
+  addSlider(image) {
+    this.setState({
+      slider: [
+        ...this.state.slider,
+        image
+      ]
+    }, this.triggerAutoSave('slider'))
+  }
+
+  removeSlider(index) {
+    this.setState({
+      slider: this.state.slider.filter((image, i) => i !== index)
+    }, () => this.triggerAutoSave('slider'))
+  }
+
+  onSortEnd({ oldIndex, newIndex }) {
+    this.setState(({ slider }) => ({
+      slider: arrayMove(slider, oldIndex, newIndex)
+    }), () => this.triggerAutoSave('slider'))
   }
 
   render() {
@@ -98,9 +124,18 @@ class SettingForm extends React.Component {
             <Form.Field>
               <label>Introduction Images</label>
               <Uploader
-                onFileUploaded={(image) => null}
+                onFileUploaded={(image) => this.addSlider(image)}
               />
               <p>Used in image slider at your landing page</p>
+              <ImageList
+                axis='xy'
+                pressDelay={200}
+                lockToContainerEdges={true}
+                transitionDuration={0}
+                items={this.state.slider}
+                onSortEnd={this.onSortEnd}
+                onRemove={this.removeSlider}
+              />
             </Form.Field>
           </Grid.Column>
         </Grid>

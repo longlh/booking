@@ -2,8 +2,6 @@ import arrayMove from 'array-move'
 import React, { Fragment } from 'react'
 import request from 'superagent'
 
-import { SortableContainer, SortableElement } from 'react-sortable-hoc'
-
 // import editor
 import CKEditor from '@ckeditor/ckeditor5-react'
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
@@ -11,44 +9,8 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
 // import UI components
 import { Button, Card, Container, Divider, Grid, Header, Form, Icon, Image, List, Menu, Reveal, Segment, TextArea } from 'semantic-ui-react'
 
-import styled from 'styled-components'
-
 import Uploader from 'elements/uploader'
-
-const Thumbnail = styled(Image)`
-  line-height: 150px;
-  overflow: hidden;
-  background-image: ${({ image }) => `url(${image})`};
-  background-size: cover;
-  display: inline-block;
-  text-align: center;
-`
-
-Thumbnail.Content = styled.div`
-  margin-left: -999px;
-  margin-right: 999px;
-`
-
-const SortableImage = SortableElement(({ value, onRemove }) => (
-    <Thumbnail image={`/upload/${value}`}>
-      <Button negative icon='trash' circular onClick={onRemove} />
-    </Thumbnail>
-))
-
-const ImageList = SortableContainer(({ items = [], onRemove }) => {
-  return (
-    <Image.Group size='small'>
-      {items.map(
-        (image, index) => <SortableImage
-          key={`item-${index}`}
-          index={index}
-          value={image}
-          onRemove={() => onRemove(index)}
-        />
-      )}
-    </Image.Group>
-  )
-})
+import ImageList from 'elements/image-list'
 
 class AssetForm extends React.Component {
   constructor(...args) {
