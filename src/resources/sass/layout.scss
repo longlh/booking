@@ -1,559 +1,60 @@
+@import './reset';
 @import './variable';
 @import './mixin';
-@import './vendor';
 
-body {
-  font-family: $font-primary;
-  background: $white;
-  font-size: 15px;
-  line-height: 1.8;
-  font-weight: 300;
-  color: lighten($black, 25%);
+// layout
+.btn {
+  user-select: none;
+  white-space: nowrap;
+  cursor: pointer;
+  text-align: center;
+  touch-action: manipulation;
 
-  &.menu-show {
-    overflow: hidden;
-    position: fixed;
-    height: 100%;
-    width: 100%;
-  }
-}
-
-a {
-  transition: .3s all ease;
-  color: $primary;
-
-  &:hover,
-  &:focus {
-    text-decoration: none;
-    color: $primary;
-    outline: none !important;
-  }
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-.h1,
-.h2,
-.h3,
-.h4,
-.h5 {
-  line-height: 1.5;
-  color: rgba(0, 0, 0, 1);
-  font-weight: 400;
-  font-family: $font-secondary;
-}
-
-.text-primary {
-  color: $primary !important;
-}
-
-.ftco-navbar-light {
-  background: transparent !important;
-  position: absolute !important;
-  right: 0;
-  left: 0;
-  top: 20px;
-  z-index: 3;
-  padding: 0;
-
-  @include media-breakpoint-down(md) {
-    background: $black !important;
-    position: relative;
-    top: 0;
-  }
-
-  .navbar-brand {
+  &--action {
+    font-size: 14px;
+    padding: 7px 15px;
+    background: $primary;
     color: $white;
-
-    @include media-breakpoint-down(sm) {
-      padding-left: 15px;
-    }
-
-    @include media-breakpoint-up(md) {
-      color: $white;
-    }
-  }
-
-  .navbar-nav {
-    @include media-breakpoint-down(md) {
-      padding: 10px 0;
-    }
-
-    >.nav-item {
-      >.nav-link {
-        font-size: 14px;
-        padding-top: .8rem;
-        padding-bottom: .8rem;
-        padding-left: 20px;
-        padding-right: 20px;
-        color: $white;
-        font-weight: 400;
-
-        @include media-breakpoint-up(lg) {
-          // color: lighten($black,10%);
-        }
-
-        @include media-breakpoint-down(md) {
-          padding-top: .6rem;
-          padding-bottom: .6rem;
-        }
-
-        &:hover {
-          color: $primary;
-        }
-
-        opacity: 1 !important;
-      }
-
-      .dropdown-menu {
-        border: none;
-        background: $white;
-        @include transition(.3s);
-        border-radius: (0);
-        -webkit-box-shadow: 0px 10px 34px -20px rgba(0, 0, 0, 0.41);
-        -moz-box-shadow: 0px 10px 34px -20px rgba(0, 0, 0, 0.41);
-        box-shadow: 0px 10px 34px -20px rgba(0, 0, 0, 0.41);
-
-        .dropdown-item {
-          font-size: 13px;
-          color: rgba(0, 0, 0, .7);
-
-          &:hover,
-          &:focus {
-            color: $black;
-            background: transparent;
-          }
-        }
-      }
-
-
-      &.ftco-seperator {
-        position: relative;
-        margin-left: 20px;
-        padding-left: 20px;
-
-        @include media-breakpoint-down(md) {
-          padding-left: 0;
-          margin-left: 0;
-        }
-
-        &:before {
-          position: absolute;
-          content: "";
-          top: 10px;
-          bottom: 10px;
-          left: 0;
-          width: 2px;
-          background: rgba($white, .05);
-
-          @include media-breakpoint-down(md) {
-            display: none;
-          }
-        }
-      }
-
-      &.cta {
-        >a {
-          color: $white;
-          border: 1px solid rgba(255, 255, 255, .4);
-          padding-top: .5rem;
-          padding-bottom: .5rem;
-          padding-left: 20px;
-          padding-right: 20px;
-          margin-top: 4px;
-          @include border-radius(30px);
-
-          span {
-            display: inline-block;
-            color: $white;
-          }
-
-          &:hover {
-            background: $primary;
-            border: 1px solid $primary;
-          }
-        }
-
-        &.cta-colored {
-          span {
-            border-color: $primary;
-          }
-        }
-      }
-
-      &.active {
-        >a {
-          color: $primary;
-        }
-      }
-    }
-  }
-
-  .navbar-toggler {
-    border: none;
-    color: rgba(255, 255, 255, .5) !important;
-    cursor: pointer;
-    padding-right: 15px;
+    border: 0;
+    border-radius: 0;
     text-transform: uppercase;
-    font-size: 16px;
-    letter-spacing: .1em;
-
-    &:hover,
-    &:focus {
-      outline: none !important;
-    }
-  }
-
-  &.scrolled {
-    position: fixed !important;
-    right: 0;
-    left: 0;
-    top: 0;
-    margin-top: -130px;
-    background: $white !important;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, .1);
-
-    .nav-item {
-      &.active {
-        >a {
-          color: $primary !important;
-        }
-      }
-
-      &.cta {
-        >a {
-          color: $white !important;
-          background: $primary;
-          border: none !important;
-          padding-top: .5rem !important;
-          padding-bottom: .5rem !important;
-          padding-left: 20px;
-          padding-right: 20px;
-          margin-top: 6px !important;
-          @include border-radius(30px);
-
-          span {
-            display: inline-block;
-            color: $white !important;
-          }
-        }
-
-        &.cta-colored {
-          span {
-            border-color: $primary;
-          }
-        }
-      }
-    }
-
-    .navbar-nav {
-      @include media-breakpoint-down(md) {
-        background: none;
-        border-radius: 0px;
-        padding-left: 0rem !important;
-        padding-right: 0rem !important;
-      }
-    }
-
-    .navbar-nav {
-      @include media-breakpoint-down(sm) {
-        background: none;
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-      }
-    }
-
-    .navbar-toggler {
-      border: none;
-      color: rgba(0, 0, 0, .5) !important;
-      border-color: rgba(0, 0, 0, .5) !important;
-      cursor: pointer;
-      padding-right: 0;
-      text-transform: uppercase;
-      font-size: 16px;
-      letter-spacing: .1em;
-
-    }
-
-    .nav-link {
-      padding-top: .9rem !important;
-      padding-bottom: .9rem !important;
-      color: $black !important;
-
-      &.active {
-        color: $primary !important;
-      }
-    }
-
-    &.awake {
-      margin-top: 0px;
-      transition: .3s all ease-out;
-    }
-
-    &.sleep {
-      transition: .3s all ease-out;
-    }
-
-    .navbar-brand {
-      color: $black;
-
-      span {
-        color: $primary;
-      }
-    }
-  }
-}
-
-.navbar-brand {
-  font-weight: 700;
-  font-size: 20px;
-  position: relative;
-
-  span {
-    color: rgba(255, 255, 255, .4);
-  }
-}
-
-.ftco-footer {
-  font-size: 14px;
-  background: darken($primary, 8%);
-  padding: 6em 0;
-
-  .ftco-footer-logo {
-    text-transform: uppercase;
-    letter-spacing: .1em;
-  }
-
-  .ftco-footer-widget {
-    h2 {
-      font-weight: normal;
-      color: $white;
-      margin-bottom: 40px;
-      font-size: 18px;
-      font-weight: 400;
-    }
-
-    ul {
-      li {
-        a {
-          span {
-            color: $white;
-          }
-        }
-      }
-    }
-
-    .btn-primary {
-      background: $white !important;
-      border: 2px solid $white !important;
-
-      &:hover {
-        background: $white;
-        border: 2px solid $white !important;
-      }
-    }
-  }
-
-  p {
-    color: rgba($white, .7);
-  }
-
-  a {
-    color: rgba($white, .7);
+    font-weight: 700;
 
     &:hover {
       color: $white;
-    }
-  }
-
-  .ftco-heading-2 {
-    font-size: 17px;
-    font-weight: 400;
-    color: $black;
-  }
-
-  .categories {
-    li {
-      border-bottom: 1px solid rgba(255, 255, 255, .1);
-
-      a {
-        span {
-          color: rgba(255, 255, 255, .5) !important;
-        }
-      }
+      background: lighten($primary, 10%);
     }
   }
 }
 
-
-.ftco-footer-social {
-  li {
-    list-style: none;
-    margin: 0 10px 0 0;
-    display: inline-block;
-
-    a {
-      height: 50px;
-      width: 50px;
-      display: block;
-      float: left;
-      background: rgba($white, .05);
-      border-radius: 50%;
-      position: relative;
-
-      span {
-        position: absolute;
-        font-size: 26px;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      }
-
-      &:hover {
-        color: $white;
-      }
-    }
-  }
-}
-
-.footer-small-nav {
-  >li {
-    display: inline-block;
-
-    a {
-      margin: 0 10px 10px 0;
-
-      &:hover,
-      &:focus {
-        color: $primary;
-      }
-    }
-  }
-}
-
-.media {
-  .ftco-icon {
-    width: 100px;
-
-    span {
-      color: $primary;
-    }
-  }
-}
-
-#ftco-loader {
-  position: fixed;
-  width: 96px;
-  height: 96px;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgba(255, 255, 255, 0.9);
-  box-shadow: 0px 24px 64px rgba(0, 0, 0, 0.24);
-  border-radius: 16px;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity .2s ease-out, visibility 0s linear .2s;
-  z-index: 1000;
-}
-
-#ftco-loader.fullscreen {
-  padding: 0;
-  left: 0;
-  top: 0;
+.header {
+  height: $header-height;
+  background: $white;
   width: 100%;
-  height: 100%;
-  transform: none;
-  background-color: #fff;
-  border-radius: 0;
-  box-shadow: none;
-}
+  position: relative;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .1);
+  padding: 0 10px;
 
-#ftco-loader.show {
-  transition: opacity .4s ease-out, visibility 0s linear 0s;
-  visibility: visible;
-  opacity: 1;
-}
-
-#ftco-loader .circular {
-  animation: loader-rotate 2s linear infinite;
-  position: absolute;
-  left: calc(50% - 24px);
-  top: calc(50% - 24px);
-  display: block;
-  transform: rotate(0deg);
-}
-
-#ftco-loader .path {
-  stroke-dasharray: 1, 200;
-  stroke-dashoffset: 0;
-  animation: loader-dash 1.5s ease-in-out infinite;
-  stroke-linecap: round;
-}
-
-@keyframes loader-rotate {
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes loader-dash {
-  0% {
-    stroke-dasharray: 1, 200;
-    stroke-dashoffset: 0;
+  &__wrapper {
+    height: 100%;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    align-items: center;
   }
 
-  50% {
-    stroke-dasharray: 89, 200;
-    stroke-dashoffset: -35px;
+  &__logo {
+    font-size: 21px;
+    font-weight: 700;
+    text-transform: uppercase;
   }
 
-  100% {
-    stroke-dasharray: 89, 200;
-    stroke-dashoffset: -136px;
+  &__navigation {
+    display: none;
   }
-}
 
-.block-23 {
-  ul {
-    padding: 0;
-
-    li {
-
-      &,
-      >a {
-        display: table;
-        line-height: 1.5;
-        margin-bottom: 15px;
-      }
-
-      span {
-        color: rgba($white, .7);
-      }
-
-      .icon,
-      .text {
-        display: table-cell;
-        vertical-align: top;
-      }
-
-      .icon {
-        width: 40px;
-        font-size: 18px;
-        padding-top: 2px;
-        color: rgba($white, 1);
-      }
-
-    }
-  }
-}
-
-@media (max-width: 991px) {
-  .ftco-navbar-light {
-    background-color: #343a40;
-    position: relative;
+  .quick-access {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
   }
 }

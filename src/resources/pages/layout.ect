@@ -5,77 +5,35 @@
   <title>Booking</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i" rel="stylesheet">
-  <link href="/libs/open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
   <% content 'head-end' %>
 </head>
 
 <body>
+  <div class="page-wrapper">
+    <header class="header">
+      <div class="header__wrapper">
+        <div class="header__top">
+          <div class="header__logo">
+            <a href="/"><%= @settings.title %></a>
+          </div><!-- header__logo -->
+        </div><!-- header__top -->
 
-  <% content %>
-  <footer class="ftco-footer ftco-section">
-    <div class="container">
-      <div class="row mb-5 d-flex">
-        <div class="col-md">
-          <div class="ftco-footer-widget mb-4">
-            <h2 class="ftco-heading-2">About <%= @settings.title %></h2>
-            <p><%= @settings.description %></p>
-            <!-- <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
-              <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-              <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-              <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-            </ul> -->
-          </div>
-        </div>
-        <div class="col-md">
-          <div class="ftco-footer-widget mb-4 ml-md-4">
-            <h2 class="ftco-heading-2">Company</h2>
-            <ul class="list-unstyled">
-              <li><a href="#">Home</a></li>
-              <li><a href="#">About Us</a></li>
-              <li><a href="#">Rooms</a></li>
-              <li><a href="#">Amenities</a></li>
-              <li><a href="#">Blog</a></li>
-              <li><a href="#">Contact</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-md">
-          <div class="ftco-footer-widget mb-4">
-            <h2 class="ftco-heading-2">Services</h2>
-            <ul class="list-unstyled">
-              <li><a href="#">Spa</a></li>
-              <li><a href="#">Rooms</a></li>
-              <li><a href="#">Restaurants</a></li>
-              <li><a href="#">Gym</a></li>
-              <li><a href="#">Promotion</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-md">
-          <div class="ftco-footer-widget mb-4">
-            <h2 class="ftco-heading-2">Have a Questions?</h2>
-            <div class="block-23 mb-3">
-              <ul>
-                <li><span class="icon icon-map-marker"></span><span class="text"><%= @settings.address %></span></li>
-                <li><a href="#"><span class="icon icon-phone"></span><span class="text"><%= @settings.phone %></span></a></li>
-                <li><a href="#"><span class="icon icon-envelope"></span><span
-                      class="text"><%= @settings.email %></span></a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
+        <div class="header__navigation">
 
-  <!-- loader -->
-  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
-      <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
-      <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
-        stroke="#F96D00" /></svg></div>
-  <% content 'body-end' %>
+        </div><!-- header__navigation -->
+
+        <div class="header__quick-access quick-access">
+          <div class="quick-access__item">
+            <a href="/" class="header__item-content btn btn--action">List rooms</a>
+          </div>
+        </div><!-- header__quick-access -->
+      </div><!-- header__wrapper -->
+    </header><!-- header -->
+    <% content %>
+
+    <% content 'body-end' %>
+  </div>
 </body>
 
 </html>

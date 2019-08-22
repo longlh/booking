@@ -1,9 +1,24 @@
-$font-primary: 'Poppins',Arial, sans-serif;
-$font-secondary: 'Playfair Display',Georgia, serif;
+$font-primary: 'Roboto', sans-serif;
 
 $white: #fff;
 $black: #000000;
 // $darken: #3a4348;
 
-$primary: #fb929e;
-$yellow: #fed333;
+$primary: #E2393D;
+$yellow: #FFB664;
+
+// grid
+$grid-sm: 576px;
+$grid-md: 768px;
+$grid-lg: 992px;
+$grid-xl: 1200px;
+$grid-xxl: 1600px;
+
+$media-grid-xs: only screen and (max-width: $grid-sm);
+$media-grid-sm: only screen and (min-width: $grid-sm);
+$media-grid-md: only screen and (min-width: $grid-md);
+$media-grid-lg: only screen and (min-width: $grid-lg);
+$media-grid-xl: only screen and (min-width: $grid-xl);
+$media-grid-xxl: only screen and (min-width: $grid-xxl);
+
+$header-height: 64px;

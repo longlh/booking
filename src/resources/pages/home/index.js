@@ -1,2 +1,2 @@
-require('js/vendor')
-require('js/main')
+// require('js/vendor')
+// require('js/main')
