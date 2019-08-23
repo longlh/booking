@@ -6,7 +6,7 @@
   .card-link-wrapper {
     background-color: white;
     border: 1px solid #e5e5e5;
-    color: lighten($black, 30%);
+    color: lighten($black, 40%);
     position: relative;
     word-wrap: break-word;
     display: block;
@@ -41,6 +41,7 @@
     text-overflow: ellipsis;
     white-space: normal;
     font-size: 18px;
+    color: lighten($black, 40%);
   }
 
   .card-subtitle {
