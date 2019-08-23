@@ -58,3 +58,59 @@
     justify-content: flex-end;
   }
 }
+
+.footer {
+  color: $gray;
+  text-align: center;
+
+  &__content {
+    padding: 40px 10px;
+  }
+
+  &__links {
+    li {
+      display: inline-block;
+
+      .footer-link {
+        color: $gray;
+      }
+    }
+
+    &--general {
+      display: inline-block;
+      margin-bottom: 30px;
+
+      li {
+        padding: 0 10px;
+      }
+    }
+
+    &--social {
+      margin-bottom: 40px;
+
+      li {
+        padding: 0 10px;
+
+        .footer-link {
+          height: 40px;
+          width: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          border: 1px solid $gray;
+          overflow: hidden;
+          font-size: 18px;
+        }
+
+        img {
+          width: 20px;
+        }
+      }
+    }
+
+    &--company-brand {
+      padding-top: 5px;
+    }
+  }
+}

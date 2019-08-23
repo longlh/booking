@@ -43,10 +43,14 @@ article *:after {
   box-sizing: border-box;
 }
 
+html, body {
+  min-height: 100%;
+}
+
 body {
   font-family: $font-primary;
   background: $white;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.8;
   font-weight: 300;
   color: lighten($black, 25%);

@@ -1,3 +1,11 @@
 @import 'sass/variable';
 @import 'sass/mixin';
 @import 'sass/layout';
+@import 'sass/card';
+
+.room-cards {
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 10px;
+}

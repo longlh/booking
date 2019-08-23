@@ -1,0 +1,35 @@
+<div class="card">
+  <a href="/rooms/<%= @room.id %>" class="card-link-wrapper">
+    <div class="card-header thumbnail">
+      <div class="thumbnail__wrapper">
+        <img src="/upload/<%= @room.images[0] %>">
+      </div>
+    </div><!-- card-header -->
+    <div class="card-body">
+      <h2 class="card-title">
+        <%= @room.name %>
+      </h2><!-- card-title -->
+
+      <div class="card-subtitle">
+        <%= @room.excerpt %>
+      </div><!-- card-subtitle -->
+
+      <div class="card-details">
+        <span class="card-price">
+          <span class="unit">¥</span>11<span class="currency-delimiter">,</span>178<span>〜</span><span class="unit-apply">/room</span>
+        </span><!-- card-price -->
+
+        <span class="with-tax">
+          (Tax included)
+        </span><!-- with-tax -->
+      </div><!-- card-details -->
+
+      <!--<div class="card-rating">
+        <div class="card-star-box">
+          <span class="rating rating-stars"></span>
+          <span class="rating-score"></span>
+        </div>
+      </div>--><!-- card-rating -->
+    </div><!-- card-body -->
+  </a>
+</div><!-- card -->

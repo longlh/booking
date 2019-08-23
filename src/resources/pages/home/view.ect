@@ -8,4 +8,11 @@
 <script src="<%= @__asset('home.js') %>"></script>
 <% end %>
 
-
+<div class="room-cards">
+  <% for asset in @assets : %>
+    <% include '../elements/card', {
+      __asset: @__asset,
+      room: asset
+    } %>
+  <% end %>
+</div>

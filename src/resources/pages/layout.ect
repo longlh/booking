@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <div class="page-wrapper">
+  <ul class="page-wrapper">
     <header class="header">
       <div class="header__wrapper">
         <div class="header__top">
@@ -30,7 +30,41 @@
         </div><!-- header__quick-access -->
       </div><!-- header__wrapper -->
     </header><!-- header -->
+
     <% content %>
+
+    <footer class="footer">
+      <ul class="footer__content">
+        <ul class="footer__links footer__links--general">
+          <li><a href="/" class="footer-link">Company</a></li>
+          <li><a href="/" class="footer-link">Privacy Policy</a></li>
+          <li><a href="/" class="footer-link">Terms of Service</a></li>
+          <li><a href="/" class="footer-link">Contact Us</a></li>
+        </ul><!-- footer__links -->
+
+        <ul class="footer__links footer__links--social">
+          <li>
+            <a href="/" class="footer-link">
+              <img src="<%= @__asset('img/social-facebook.svg') %>" />
+            </a>
+          </li>
+          <li>
+            <a href="/" class="footer-link">
+              <img src="<%= @__asset('img/social-twitter.svg') %>" />
+            </a>
+          </li>
+          <li>
+            <a href="/" class="footer-link">
+              <img src="<%= @__asset('img/social-instagram.svg') %>" />
+            </a>
+          </li>
+        </ul><!-- footer__links -->
+
+        <ul class="footer__links footer__links--company-brand">
+          <li>Vacation Rentals and Service Apartments | <%= @settings.title %></li>
+        </ul><!-- footer__links -->
+      </div><!-- footer__content -->
+    </footer><!-- footer -->
 
     <% content 'body-end' %>
   </div>
