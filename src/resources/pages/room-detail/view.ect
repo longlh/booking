@@ -8,3 +8,28 @@
 <script src="<%= @__asset('room-detail.js') %>"></script>
 <% end %>
 
+<div class="cover-image" style="background-image: url('/upload/<%= @asset.images[0] %>')"></div>
+
+<div class="section-contents">
+  <div class="room-reservation-contents">
+
+  </div><!-- room-reservation-contents -->
+
+  <div class="room-main-contents">
+    <% include 'room-detail/elements/section-about', {
+      asset: @asset
+    } %>
+
+    <div class="section section--price">
+
+    </div><!-- section-price -->
+
+    <div class="section section--review">
+
+    </div><!-- section-review -->
+
+    <div class="section section--access">
+
+    </div><!-- section-access -->
+  </div><!-- room-main-contents -->
+</div>

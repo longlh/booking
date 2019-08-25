@@ -3,9 +3,120 @@
 @import 'sass/layout';
 @import 'sass/card';
 
+.visual-image {
+  color: $white;
+  overflow: hidden;
+  position: relative;
+  height: 125vw;
+
+  &::before {
+    bottom: 0;
+    content: '';
+    height: 100%;
+    left: 0;
+    position: absolute;
+    width: 100%;
+  }
+
+  img {
+    width: 100%;
+    transform: translate(0%, -50%);
+    height: auto;
+    left: 0;
+    position: absolute;
+    top: 50%;
+  }
+
+  .visual-content {
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+
+    &::before {
+      background: linear-gradient(-90deg, transparent, rgba(0,0,0,0.8));
+      content: '';
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+
+    &__inner {
+      transform: translate(0%, -50%);
+      padding: 3.2rem 1.6rem;
+      position: absolute;
+      top: 50%;
+      width: 100%;
+    }
+
+    &__title {
+      text-transform: uppercase;
+      word-break: normal;
+      word-wrap: break-word;
+      font-size: 36px;
+      margin-bottom: 10px;
+      font-weight: 300;
+      font-family: $font-secondary;
+    }
+
+    &__description {
+      word-break: normal;
+      word-wrap: break-word;
+    }
+  }
+
+  @media screen and (min-width: $grid-md) {
+    height: 320px;
+
+    .visual-content {
+      &::before {
+        background: linear-gradient(-90deg, transparent, rgba(0,0,0,0.6));
+        width: 70%;
+      }
+
+      &__inner {
+        padding: 3.2rem;
+      }
+
+      &__title {
+        font-size: 48px;
+      }
+
+      &__description {
+        width: 60%;
+      }
+    }
+  }
+}
+
 .room-cards {
   padding: 10px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 10px;
+
+  @media screen and (max-width: $grid-sm) {
+    grid-template-columns: 1fr;
+  }
+
+  @media screen and (min-width: $grid-sm) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media screen and (min-width: $grid-md) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  @media screen and (min-width: $grid-lg) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  @media screen and (min-width: $grid-xxl) {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
 }

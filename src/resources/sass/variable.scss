@@ -1,4 +1,5 @@
 $font-primary: 'Roboto', sans-serif;
+$font-secondary: 'Encode Sans', sans-serif;
 
 $white: #fff;
 $black: #000000;
@@ -14,12 +15,5 @@ $grid-md: 768px;
 $grid-lg: 992px;
 $grid-xl: 1200px;
 $grid-xxl: 1600px;
-
-$media-grid-xs: only screen and (max-width: $grid-sm);
-$media-grid-sm: only screen and (min-width: $grid-sm);
-$media-grid-md: only screen and (min-width: $grid-md);
-$media-grid-lg: only screen and (min-width: $grid-lg);
-$media-grid-xl: only screen and (min-width: $grid-xl);
-$media-grid-xxl: only screen and (min-width: $grid-xxl);
 
 $header-height: 64px;

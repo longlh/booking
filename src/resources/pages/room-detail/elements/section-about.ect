@@ -1,0 +1,107 @@
+<div class="section section-about">
+  <div class="section__outer">
+    <div class="section__inner">
+      <div class="section-about__basic-info">
+        <div class="headline">
+          <h1><%= @asset.name %></h1>
+          <h2>Only 3minutes from Haneda Airport!</h2>
+        </div><!-- headline -->
+        <ul>
+          <li><span>Vacation Rental</span></li>
+          <li><span>Entire Place</span></li>
+          <li><span>INSTANT BOOK</span></li>
+        </ul>
+      </div><!-- section-about__basic-info -->
+
+      <div class="section-about__other-photos">
+        <div class="room-thumbs">
+          <% for image in @asset.images : %>
+          <figure class="room-thumbs__item">
+            <a>
+              <img src="/upload/<%= image %>">
+            </a>
+          </figure>
+          <% end %>
+        </div>
+      </div><!-- section-about__other-photos -->
+    </div><!-- section__inner -->
+  </div><!-- section__outer -->
+
+  <div class="section__article">
+    <div class="section__outer">
+      <div class="section__inner">
+        <div class="section-element">
+          <div class="section-element__headline">
+            <h3>DESCRIPTION</h3>
+          </div>
+          <div class="section-element__content">
+            <p class="accordion-content">
+              Welcome to the "residence" of the famous samurai Sanada Yukimura!
+              <br>This 66 years old house has been recently renovated to become a vacation rental. Aside from the pillars and beams, the walls, floors and all the plumbing system have been restored to refresh and modernise the house.
+              <br>As a future host, I put a lot of time and effort into creating a nice interior design and a good atmosphere!
+              <br>The furniture is antique and duvets are provided for all 4 single beds.
+            </p>
+          </div>
+        </div><!-- section-element -->
+
+        <div class="section-element">
+          <div class="section-element__headline">
+            <h3>ABOUT THIS ROOM</h3>
+          </div>
+          <div class="section-element__content">
+            <div class="room-element-wrapper">
+              <div class="room-element">
+                <div class="room-element__caption">Room type</div>
+                <div class="room-element__content">Entire Place</div>
+              </div><!-- room-element -->
+              <div class="room-element">
+                <div class="room-element__caption">Traveler number</div>
+                <div class="room-element__content">7 peoples</div>
+              </div><!-- room-element -->
+              <div class="room-element">
+                <div class="room-element__caption">Size</div>
+                <div class="room-element__content">74.0m2</div>
+              </div><!-- room-element -->
+              <div class="room-element">
+                <div class="room-element__caption">Bedrooms</div>
+                <div class="room-element__content">3 rooms</div>
+              </div><!-- room-element -->
+              <div class="room-element">
+                <div class="room-element__caption">Futons</div>
+                <div class="room-element__content">1 futon</div>
+              </div><!-- room-element -->
+            </div><!-- room-element-wrapper -->
+
+            <div class="room-element-wrapper">
+              <div class="room-element">
+                <div class="room-element__caption">Beds</div>
+                <div class="room-element__content">6 beds</div>
+              </div><!-- room-element -->
+              <div class="room-element">
+                <div class="room-element__caption">Others</div>
+                <div class="room-element__content">0</div>
+              </div><!-- room-element -->
+              <div class="room-element">
+                <div class="room-element__caption">Bathrooms</div>
+                <div class="room-element__content">1 room</div>
+              </div><!-- room-element -->
+              <div class="room-element">
+                <div class="room-element__caption">Toilets</div>
+                <div class="room-element__content">1 toilet</div>
+              </div><!-- room-element -->
+            </div><!-- room-element-wrapper -->
+          </div>
+        </div><!-- section-element -->
+
+        <div class="section-element">
+          <div class="section-element__headline">
+            <h3>BED CONFIGURATION</h3>
+          </div>
+          <div class="section-element__content">
+          </div>
+        </div><!-- section-element -->
+
+      </div><!-- section__inner -->
+    </div><!-- section__outer -->
+  </div><!-- section__article -->
+</div><!-- section-about -->

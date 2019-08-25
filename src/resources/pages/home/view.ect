@@ -8,6 +8,20 @@
 <script src="<%= @__asset('home.js') %>"></script>
 <% end %>
 
+<div class="visual-image">
+  <picture></picture>
+  <div class="visual-image__content visual-content">
+    <div class="visual-content__inner">
+      <div class="visual-content__title">Tokyo</div>
+      <div class="visual-content__description">
+        <p>The capital of Japan, Tokyo, is a city where tradition and modern meet.
+        <br>It is a place of world-renowned tourist attractions, where you can experience a mixture of eye-opening new technology alongside Japanese traditional culture.
+        <br>In summer, there are summer festivals with fireworks and night markets from all over Japan, which show the vibrancy of the city.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="room-cards">
   <% for asset in @assets : %>
     <% include '../elements/card', {

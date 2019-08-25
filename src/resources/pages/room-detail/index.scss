@@ -1,4 +1,251 @@
-// @import 'sass/variable';
-// @import 'sass/mixin';
-// @import 'sass/layout';
-// @import 'sass/contact-form';
+@import 'sass/variable';
+@import 'sass/mixin';
+@import 'sass/layout';
+
+$section-text-color: #666;
+
+.cover-image {
+  width: 100%;
+  height: 264px;
+  height: 82.5vw;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+
+  @media screen and (min-width: $grid-sm) {
+    height: 500px;
+    height: 65vw;
+  }
+
+  @media screen and (min-width: $grid-xl) {
+    height: 480px;
+  }
+}
+
+.section-contents {
+  padding-top: 16px;
+
+  @media screen and (min-width: $grid-xl) {
+    margin: 0 auto;
+    position: relative;
+
+    .room-reservation-contents {
+      width: 100%;
+      max-width: 1280px;
+      height: 0;
+      position: relative;
+      margin: 0 auto;
+      z-index: 80;
+    }
+  }
+}
+
+.section {
+  min-height: calc(100vh - 300px);
+  display: none;
+
+  &__article {
+    padding: 0 16px;
+  }
+
+  @media screen and (min-width: $grid-xl) {
+    display: block;
+    min-height: auto;
+
+    &__outer {
+      margin: 0 auto;
+      max-width: 1280px;
+    }
+
+    &__inner {
+      width: calc(100% - 300px);
+    }
+
+    &__article {
+      margin-top: 18px;
+      padding: 0;
+      background: #f7f6f3;
+    }
+  }
+}
+
+.section-element {
+  padding-top: 24px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #ccc;
+
+  &__headline {
+    h3 {
+      margin: 0 0 10px;
+      color: $section-text-color;
+      font-size: 16px;
+      font-weight: bold;
+    }
+  }
+
+  &__content {
+    height: 36rem;
+    overflow: hidden;
+  }
+
+  .room-element-wrapper {
+    display: inline-block;
+    width: 50%;
+    padding-right: 15px;
+    vertical-align: top;
+  }
+
+  .room-element {
+    &__caption {
+      display: inline-block;
+      font-size: 14px;
+      color: $section-text-color;
+      margin-right: 6px;
+
+      &::after {
+        content: ':';
+      }
+    }
+
+    &__content {
+      display: inline-block;
+      font-size: 14px;
+    }
+  }
+
+  @media screen and (min-width: $grid-xl) {
+    padding: 30px 0;
+
+    &__headline {
+      display: inline-block;
+      vertical-align: top;
+      width: 29%;
+
+      h3 {
+        font-size: 18px;
+      }
+    }
+
+    &__content {
+      height: 14rem;
+      display: inline-block;
+      width: 70%;
+    }
+
+    .room-element-wrapper {
+      display: inline-block;
+      width: 49%;
+      padding-right: 15px;
+      vertical-align: top;
+    }
+  }
+}
+
+// SECTION ABOUT
+.section-about {
+  &__basic-info {
+    font-family: $font-secondary;
+
+    .headline {
+      margin: 0 16px;
+      border-bottom: 1px solid #999;
+      line-height: 1;
+      text-transform: uppercase;
+
+      h1 {
+        color: #222;
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 1;
+        margin-bottom: 5px;
+      }
+
+      h2 {
+        color: $section-text-color;
+        font-size: 20px;
+        font-weight: 300;
+        line-height: 1;
+      }
+    }
+
+    ul {
+      margin: 0 16px;
+      padding: 12px 0;
+      line-height: 1;
+      font-size: 16px;
+      color: #999;
+      font-weight: 700;
+    }
+
+    li {
+      margin-right: 10px;
+      padding-bottom: 5px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+  }
+
+  &__other-photos {
+    padding: 0;
+  }
+
+  .room-thumbs {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+
+    &__item {
+      display: inline-block;
+      margin-left: 2px;
+
+      img {
+        display: inline-block;
+        width: 120px;
+      }
+    }
+  }
+
+  @media screen and (min-width: $grid-xl) {
+    &__basic-info {
+      .headline {
+        margin: 0 32px;
+        border-bottom: none;
+      }
+
+      ul {
+        margin: 0 32px;
+        padding-bottom: 0;
+      }
+
+      li {
+        display: inline-block;
+        font-size: 18px;
+        padding-bottom: 0;
+      }
+    }
+
+    &__other-photos {
+      padding: 16px 0 16px 32px;
+      background: $white;
+    }
+
+    .room-thumbs {
+      &__item {
+        width: 13%;
+        max-width: 120px;
+        height: 120px;
+        float: left;
+        overflow: hidden;
+        margin-left: 8px;
+
+        img {
+          display: inline-block;
+          width: auto;
+          height: auto;
+          max-height: 120px;
+          margin-left: -55px;
+        }
+      }
+    }
+  }
+}
