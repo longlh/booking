@@ -1,15 +1,6 @@
-require('js/vendor')
-require('js/main')
-require('ez-plus')
+window.$ = window.jQuery = require('jquery')
+import { Stuck } from 'stuck-js'
 
-;(function() {
-  $('#zoom_03').ezPlus({
-    gallery: 'gallery_01',
-    cursor: 'pointer',
-    galleryActiveClass: 'active',
-    // imageCrossfade: true,
-    responsive : true,
-    scrollZoom : false,
-    showLens: true
-  })
-})();
+const instances = new Stuck([
+  { selector: '.js-sticky' },
+], { marginTop: 10 })

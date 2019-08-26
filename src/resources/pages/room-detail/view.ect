@@ -11,18 +11,18 @@
 <div class="cover-image" style="background-image: url('/upload/<%= @asset.images[0] %>')"></div>
 
 <div class="section-contents">
-  <div class="room-reservation-contents">
-
-  </div><!-- room-reservation-contents -->
+  <% include 'room-detail/elements/reservation', {
+    asset: @asset
+  } %>
 
   <div class="room-main-contents">
     <% include 'room-detail/elements/section-about', {
       asset: @asset
     } %>
 
-    <div class="section section--price">
-
-    </div><!-- section-price -->
+    <% include 'room-detail/elements/section-price', {
+      asset: @asset
+    } %>
 
     <div class="section section--review">
 

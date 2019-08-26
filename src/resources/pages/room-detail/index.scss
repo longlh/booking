@@ -84,7 +84,7 @@ $section-text-color: #666;
   }
 
   &__content {
-    height: 36rem;
+    // height: 36rem;
     overflow: hidden;
   }
 
@@ -113,6 +113,65 @@ $section-text-color: #666;
     }
   }
 
+  .room-amenities-wrapper {
+    padding: 0 0 24px;
+
+    &__title {
+      margin: 0 0 12px;
+      color: inherit;
+      font-weight: 400;
+    }
+
+    &__view {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-bottom: 0;
+    }
+
+    &__item {
+      width: 49%;
+      height: 32px;
+      margin-bottom: 5px;
+      padding: 0 4px;
+      border-radius: 2px;
+      background: #f7f6f3;
+      color: $section-text-color;
+      font-size: 13px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &--disabled {
+        color: #bbbbbb;
+        text-decoration: line-through;
+      }
+    }
+  }
+
+  .room-amenities-wrapper + .room-amenities-wrapper {
+    border-top: 1px solid #cccccc;
+    padding: 24px 0;
+  }
+
+  @media screen and (min-width: $grid-md) {
+    .room-amenities-wrapper {
+      &__view {
+        justify-content: flex-start;
+      }
+
+      &__item {
+        width: 32%;
+
+        &:nth-of-type(3n-1) {
+          margin: 0 2%;
+        }
+      }
+    }
+  }
+
   @media screen and (min-width: $grid-xl) {
     padding: 30px 0;
 
@@ -127,7 +186,7 @@ $section-text-color: #666;
     }
 
     &__content {
-      height: 14rem;
+      // height: 10rem;
       display: inline-block;
       width: 70%;
     }
@@ -137,6 +196,35 @@ $section-text-color: #666;
       width: 49%;
       padding-right: 15px;
       vertical-align: top;
+    }
+
+    .room-amenities-wrapper {
+      padding-bottom: 30px;
+
+      &__title {
+        font-size: 16px;
+        padding-bottom: 20px;
+        margin: 0;
+      }
+
+      &__view {
+        margin-bottom: 0;
+      }
+
+      &__item {
+        background: $white;
+        border: 2px solid $white;
+        padding: 0;
+
+        &--disabled {
+          background: transparent;
+        }
+      }
+    }
+
+    .room-amenities-wrapper + .room-amenities-wrapper {
+      padding-top: 30px;
+      border-top: 1px solid #cccccc;
     }
   }
 }
@@ -245,6 +333,99 @@ $section-text-color: #666;
           max-height: 120px;
           margin-left: -55px;
         }
+      }
+    }
+  }
+}
+
+// SESSION PRICE
+.section-price {
+  @media screen and (min-width: $grid-xl) {
+    .section__article {
+      margin-top: 0;
+      padding: 0;
+    }
+  }
+}
+
+// room-reservation-contents
+.room-reservation-contents {
+  .reservation-widget {
+    background: $white;
+    min-height: 100%;
+
+    &__title {
+      background: #222;
+      color: $white;
+      font-size: 16px;
+      height: 40px;
+      line-height: 40px;
+      padding-left: 17px;
+    }
+
+    &__form {
+      background: $white;
+      border: 0;
+      height: 100%;
+      margin: 0;
+      padding: 0 20px 30px;
+      position: relative;
+      text-align: left;
+      width: 100vw;
+    }
+  }
+
+  .widget-form {
+    &__action {
+      button {
+        height: 48px;
+        line-height: 46px;
+        background: #e23933;
+        border: 0;
+        cursor: pointer;
+        color: $white;
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 16px;
+        padding: 0 10px;
+      }
+    }
+  }
+
+  @media screen and (min-width: $grid-xl) {
+    width: 100%;
+    max-width: 1280px;
+    height: 0;
+    position: relative;
+    margin: 0 auto;
+    z-index: 80;
+
+    .section-reservation-widget {
+      width: 300px;
+      position: absolute;
+      right: 0;
+      margin: -56px 0 0 auto;
+    }
+
+    .reservation-widget {
+      background: transparent;
+      display: block;
+      min-height: 0;
+      width: 300px;
+
+      &__title {
+        background: rgba(34,34,34,0.7);
+        font-size: 14px;
+        height: 40px;
+        line-height: 40px;
+        padding-left: 20px;
+      }
+
+      &__form {
+        border-top: none;
+        border: 1px solid #ccc;
+        height: 100%;
+        width: 100%;
       }
     }
   }
