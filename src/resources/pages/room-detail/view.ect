@@ -10,7 +10,7 @@
 
 <div class="cover-image" style="background-image: url('/upload/<%= @asset.images[0] %>')"></div>
 
-<div class="section-contents">
+<div class="section-contents" id="section-contents">
   <% include 'room-detail/elements/reservation', {
     asset: @asset
   } %>

@@ -1,3 +1,4 @@
+@import '~daterangepicker/daterangepicker.css';
 @import 'sass/variable';
 @import 'sass/mixin';
 @import 'sass/layout';
@@ -368,7 +369,7 @@ $section-text-color: #666;
       border: 0;
       height: 100%;
       margin: 0;
-      padding: 0 20px 30px;
+      padding: 20px;
       position: relative;
       text-align: left;
       width: 100vw;
@@ -389,6 +390,48 @@ $section-text-color: #666;
         font-size: 16px;
         padding: 0 10px;
       }
+    }
+
+    &__control {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid #e5e5e5;
+      height: 40px;
+      padding: 0;
+      margin-bottom: 12px;
+
+      input, .input {
+        background: transparent;
+        border: 0;
+        outline: 0;
+        height: 100%;
+        width: 100%;
+        padding: 0 10px 0 44px;
+      }
+
+      .input {
+        cursor: pointer;
+      }
+
+      &:focus {
+        border: 1px solid #ff8073;
+      }
+    }
+
+    &__icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      height: 40px;
+      line-height: 44px;
+      pointer-events: none;
+      position: absolute;
+      text-align: center;
+      top: 0;
+      width: 44px;
+      z-index: 2;
+      left: 0;
     }
   }
 
@@ -414,7 +457,7 @@ $section-text-color: #666;
       width: 300px;
 
       &__title {
-        background: rgba(34,34,34,0.7);
+        background: #222;
         font-size: 14px;
         height: 40px;
         line-height: 40px;
@@ -426,6 +469,12 @@ $section-text-color: #666;
         border: 1px solid #ccc;
         height: 100%;
         width: 100%;
+      }
+    }
+
+    .widget-form {
+      &__control {
+        background: $white;
       }
     }
   }
