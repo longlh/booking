@@ -394,7 +394,6 @@ $section-text-color: #666;
 
     &__control {
       position: relative;
-      overflow: hidden;
       border: 1px solid #e5e5e5;
       height: 40px;
       padding: 0;
@@ -411,10 +410,109 @@ $section-text-color: #666;
 
       .input {
         cursor: pointer;
+        display: flex;
+        align-items: center;
       }
 
       &:focus {
         border: 1px solid #ff8073;
+      }
+
+      &.open {
+        .menu {
+          display: block;
+        }
+      }
+
+      .menu {
+        -webkit-background-clip: padding-box;
+        background-clip: padding-box;
+        background-color: $white;
+        display: none;
+        font-size: 16px;
+        left: 0;
+        list-style: none;
+        position: absolute;
+        text-align: left;
+        top: 100%;
+        z-index: 1000;
+        box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,0.05);
+        margin: 6px 0 0;
+        min-width: 100%;
+        padding: 2rem 1.6rem;
+
+        &__container {
+          display: grid;
+          grid-template-columns: max-content 1fr;
+          grid-gap: 20px;
+          align-items: center;
+          justify-content: center;
+        }
+
+        &__action {
+          padding: 1.6rem 0 0;
+          text-align: right;
+        }
+
+        &__btn {
+          color: #e23933;
+          cursor: pointer;
+          background-color: transparent;
+          border: 0;
+          font-weight: bold;
+          text-decoration: none;
+        }
+      }
+
+      .counter-wrapper {
+        display: grid;
+        grid-template-columns: 40px 60px 40px;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+
+        &__btn {
+          background-image: none;
+          border: 1px solid #e2393d;
+          display: inline-block;
+          font-weight: 500;
+          text-align: center;
+          text-decoration: none;
+          vertical-align: middle;
+          white-space: nowrap;
+          font-size: 14px;
+          line-height: 40px;
+          user-select: none;
+          background-color: transparent;
+          background-image: none;
+          color: #e2393d;
+          border-radius: 30px;
+          line-height: 38px;
+          margin-bottom: 0;
+          padding: 0 15px;
+          touch-action: manipulation;
+          cursor: pointer;
+          outline: none;
+
+          &.disabled {
+            opacity: 0.7;
+            cursor: no-drop;
+          }
+
+          &:hover {
+            background: #e23933;
+            color: $white;
+          }
+        }
+
+        &__display {
+          font-size: 16px;
+          font-weight: 700;
+          user-select: none;
+          width: 100%;
+          padding: 0;
+          text-align: center;
+        }
       }
     }
 
@@ -475,6 +573,17 @@ $section-text-color: #666;
     .widget-form {
       &__control {
         background: $white;
+      }
+    }
+  }
+
+  @media screen and (min-width: $grid-md) {
+    .widget-form {
+      &__control {
+        .menu {
+          left: auto;
+          right: 0;
+        }
       }
     }
   }
