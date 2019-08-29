@@ -1,3 +1,244 @@
 @import 'sass/variable';
 @import 'sass/mixin';
 @import 'sass/layout';
+
+.page-container {
+  text-align: left;
+
+  .page-wrapper {
+    padding: 17px;
+  }
+
+  &__photo {
+    width: 100%;
+    height: 67vw;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+  }
+
+  @media screen and (min-width: $grid-md) {
+    &__photo {
+      height: 500px;
+    }
+  }
+
+  @media screen and (min-width: $grid-xl) {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 48px 34px;
+
+    &__photo {
+      display: none;
+    }
+  }
+}
+
+// SECTION REVERSED PRICE
+.section-reversed-price {
+  margin-bottom: 20px;
+
+  @media screen and (min-width: $grid-xl) {
+    width: 35%;
+    float: right;
+    display: block;
+    margin-bottom: 0;
+
+    &__photo {
+      display: block;
+      height: 160px;
+      width: 408px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+      margin: 0 0 0 auto;
+    }
+  }
+}
+
+.reversed-price-content {
+  border-bottom: 1px solid #cccccc;
+
+  @media screen and (min-width: $grid-xl) {
+    width: 408px;
+    margin: 0 0 0 auto;
+    border: 1px solid #cccccc;
+    border-top: none;
+
+    .room-info {
+      display: none;
+    }
+  }
+}
+
+.room-info {
+  padding-bottom: 15px;
+  border-bottom: 1px solid #cccccc;
+
+  &__title {
+    font-family: $font-secondary;
+    color: #222222;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1em;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+
+  &__subtitle {
+    font-family: $font-secondary;
+    color: #666666;
+    font-size: 20px;
+    line-height: 1em;
+    text-transform: uppercase;
+  }
+
+  &__address {
+    color: #999999;
+    font-size: 14px;
+  }
+
+  @media screen and (min-width: $grid-xl) {
+    width: 408px;
+    margin: 0 0 0 auto;
+    border: 1px solid #cccccc;
+    border-top: none;
+  }
+}
+
+.room-reversed-period {
+  position: relative;
+  padding: 13px 0 15px;
+  border-bottom: 1px solid #cccccc;
+  display: grid;
+  grid-template-columns: 1fr max-content 1fr;
+
+  .checkin-block,
+  .checkout-block {
+    color: #666666;
+  }
+
+  .checkout-block {
+    text-align: right;
+  }
+
+  .separator-block {
+    font-size: 36px;
+    color: #cccccc;
+  }
+
+  .caption {
+    font-size: 16px;
+  }
+
+  .content-date {
+    font-size: 24px;
+    line-height: 1.2em;
+    font-weight: 500;
+  }
+
+  .content-time {
+    font-size: 12px;
+  }
+
+  @media screen and (min-width: $grid-xl) {
+    margin: 0 25px;
+    border-bottom: 2px solid #cccccc;
+  }
+}
+
+.room-price {
+  padding: 24px 0;
+
+  @media screen and (min-width: $grid-xl) {
+    margin: 0 25px;
+    border-bottom: none;
+  }
+}
+
+.room-price-item {
+  font-size: 14px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  &__caption {
+    font-size: 18px;
+  }
+
+  &__content {
+    text-align: right;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.4em;
+  }
+}
+
+// SECTION MAIN CONTENT
+.section-content {
+  .room-info {
+    display: none;
+  }
+
+  @media screen and (min-width: $grid-xl) {
+    width: 65%;
+    float: left;
+    padding-right: 40px;
+
+    .room-info {
+      display: block;
+      width: auto;
+      border: 0;
+      border-bottom: 2px solid #cccccc;
+    }
+  }
+}
+
+.booking-form {
+  margin-top: 20px;
+
+  &__control {
+    position: relative;
+    border: 1px solid #e5e5e5;
+    height: 40px;
+    padding: 0;
+    margin-bottom: 12px;
+
+    input {
+      background: transparent;
+      border: 0;
+      outline: 0;
+      height: 100%;
+      width: 100%;
+      padding: 0 10px 0 44px;
+    }
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    height: 40px;
+    line-height: 44px;
+    pointer-events: none;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 44px;
+    z-index: 2;
+    left: 0;
+  }
+
+  &__btn {
+    height: 48px;
+    line-height: 46px;
+    background: #e23933;
+    border: 0;
+    cursor: pointer;
+    color: $white;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 16px;
+    padding: 0 10px;
+  }
+}

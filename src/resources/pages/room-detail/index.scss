@@ -26,6 +26,10 @@ $section-text-color: #666;
 .section-contents {
   padding-top: 16px;
 
+  .room-reservation-contents {
+    display: none;
+  }
+
   @media screen and (min-width: $grid-xl) {
     margin: 0 auto;
     position: relative;
@@ -37,13 +41,13 @@ $section-text-color: #666;
       position: relative;
       margin: 0 auto;
       z-index: 80;
+      display: block;
     }
   }
 }
 
 .section {
   min-height: calc(100vh - 300px);
-  display: none;
 
   &__article {
     padding: 0 16px;
@@ -254,6 +258,7 @@ $section-text-color: #666;
         font-size: 20px;
         font-weight: 300;
         line-height: 1;
+        margin-bottom: 5px;
       }
     }
 
@@ -271,6 +276,8 @@ $section-text-color: #666;
       padding-bottom: 5px;
       text-transform: uppercase;
       font-weight: 700;
+      display: inline-block;
+      font-size: 13px;
     }
   }
 
@@ -286,10 +293,16 @@ $section-text-color: #666;
     &__item {
       display: inline-block;
       margin-left: 2px;
+      height: 74px;
+      width: 120px;
+      background: #000;
+      text-align: center;
+      overflow: hidden;
 
       img {
         display: inline-block;
-        width: 120px;
+        width: auto;
+        height: 100%;
       }
     }
   }
@@ -308,7 +321,6 @@ $section-text-color: #666;
 
       li {
         display: inline-block;
-        font-size: 18px;
         padding-bottom: 0;
       }
     }
@@ -332,7 +344,6 @@ $section-text-color: #666;
           width: auto;
           height: auto;
           max-height: 120px;
-          margin-left: -55px;
         }
       }
     }

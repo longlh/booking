@@ -8,10 +8,38 @@
 <script src="<%= @__asset('booking.js') %>"></script>
 <% end %>
 
-<div class="section-contents">
-  <form class="booking-form">
-    <div class="booking-form__control">
+<div class="page-container clearfix">
+  <div class="page-container__photo" style="background-image: url(https://static.stayjapan.com/room/966/a10/def/12436_cover.jpg?1508885787)"></div>
+  <form class="page-wrapper clearfix">
+    <% include 'booking/elements/reversed-price' %>
 
-    </div>
+    <div class="section-content">
+      <div class="room-info">
+        <div class="room-info__title">Bayama Room</div>
+        <div class="room-info__subtitle">Charming apartment near Tokyo Dome</div>
+      </div>
+
+      <div class="booking-form">
+        <div class="booking-form__control">
+          <div class="booking-form__icon">
+            <span class="material-icons">account_circle</span>
+          </div>
+          <input type="text" placeholder="First Name">
+        </div>
+        <div class="booking-form__control">
+          <div class="booking-form__icon">
+            <span class="material-icons">account_circle</span>
+          </div>
+          <input type="text" placeholder="Last Name">
+        </div>
+        <div class="booking-form__control">
+          <div class="booking-form__icon">
+            <span class="material-icons">email</span>
+          </div>
+          <input type="text" placeholder="Email">
+        </div>
+        <button class="booking-form__btn">Request Now</button>
+      </div>
+    </div><!-- section-content -->
   </form>
 </div>
