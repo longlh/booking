@@ -30,5 +30,17 @@ export default {
         asset
       })
     }
+  ],
+  booking: [
+    getSettings,
+    async (req, res, next) => {
+      const id = req.params.id
+
+      const asset = await Asset.findById(id).lean()
+
+      res.render('booking', {
+        asset
+      })
+    }
   ]
 }

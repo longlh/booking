@@ -13,6 +13,9 @@ export default {
   '/contact': {
     get: controllers.contact.view
   },
+  '/booking/:id': {
+    get: controllers.room.booking
+  },
   '/admin': {
     get: (req, res, next) => {
       res.render('admin/dashboard')
