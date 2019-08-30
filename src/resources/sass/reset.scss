@@ -55,6 +55,11 @@ body {
   font-weight: 300;
   color: lighten($black, 25%);
   min-width: 320px;
+
+  &.no-scroll {
+    position: fixed;
+    overflow: hidden;
+  }
 }
 
 a {

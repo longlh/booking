@@ -24,6 +24,17 @@ import { Stuck } from 'stuck-js'
     $(this).val('')
   })
 
+  // show request booking in mobile
+  $('#mobile-request-booking').click(function() {
+    $('body').addClass('no-scroll')
+    $('#room-reservation').addClass('mobile-open')
+  })
+
+  $('#reservation-widget-close').click(function() {
+    $('body').removeClass('no-scroll')
+    $('#room-reservation').removeClass('mobile-open')
+  })
+
   // counter
   const counter = () => {
     const $counterDisplay = $('#counter-display')
