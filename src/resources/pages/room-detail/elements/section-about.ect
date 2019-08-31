@@ -16,11 +16,9 @@
       <div class="section-about__other-photos">
         <div class="room-thumbs">
           <% for image in @asset.images : %>
-          <figure class="room-thumbs__item">
-            <a>
-              <img src="/upload/<%= image %>">
-            </a>
-          </figure>
+          <a href="/upload/<%= image %>" class="room-thumbs__item">
+            <img src="/upload/<%= image %>">
+          </a>
           <% end %>
         </div>
       </div><!-- section-about__other-photos -->

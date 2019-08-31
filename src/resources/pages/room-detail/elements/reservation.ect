@@ -6,13 +6,16 @@
         <span class="material-icons reservation-widget__close" id="reservation-widget-close">close</span>
       </div>
       <div class="reservation-widget__form">
-        <form action="" class="widget-form">
+        <form id="reservation-form" class="widget-form">
+          <input type="hidden" name="roomId" value="<%= @asset._id %>">
           <div class="widget-form__condition">
             <div class="widget-form__control">
               <div class="widget-form__icon">
                 <span class="material-icons">calendar_today</span>
               </div>
-              <input type="text" id="checkin-date" placeholder="Check-in / Check-out">
+              <input type="text" name="date" id="checkin-date" placeholder="Check-in / Check-out">
+              <input type="hidden" id="checkin-date-input" name="checkin-date">
+              <input type="hidden" id="checkout-date-input" name="checkout-date">
             </div>
             <div class="widget-form__control" id="traveler-control">
               <div class="widget-form__icon">
@@ -21,6 +24,7 @@
               <div class="input" id="traveler-input">
                 <span id="traveler-number">1</span>&nbsp;
                 <span id="traveler-text">traveler</span>
+                <input type="hidden" id="traveler" name="traveler" value="1">
               </div>
               <div class="menu">
                 <div class="menu__container">
@@ -41,7 +45,7 @@
           </div>
 
           <div class="widget-form__action">
-            <button>Request booking</button>
+            <button type="submit">Request booking</button>
           </div>
         </form>
       </div>

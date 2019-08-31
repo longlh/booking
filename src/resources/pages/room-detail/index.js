@@ -1,5 +1,6 @@
 window.$ = window.jQuery = require('jquery')
 require('daterangepicker')
+require('simplelightbox')
 import { Stuck } from 'stuck-js'
 
 ;(function() {
@@ -7,6 +8,9 @@ import { Stuck } from 'stuck-js'
   new Stuck([
     { selector: '.js-sticky', wrapper: '#section-contents' },
   ])
+
+  // slider
+  $('.room-thumbs a').simpleLightbox()
 
   // datepicker
   $('#checkin-date').daterangepicker({
@@ -18,6 +22,9 @@ import { Stuck } from 'stuck-js'
 
   $('#checkin-date').on('apply.daterangepicker', function(ev, picker) {
     $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'))
+
+    $('#checkin-date-input').val(picker.startDate.valueOf())
+    $('#checkout-date-input').val(picker.endDate.valueOf())
   })
 
   $('#checkin-date').on('cancel.daterangepicker', function(ev, picker) {
@@ -95,10 +102,32 @@ import { Stuck } from 'stuck-js'
       }
 
       $travelerControl.removeClass('open')
+
+      $('#traveler').val(number)
     })
 
     $counterDisplay.text(number)
   }
 
   counter()
+
+  // submit form
+  $('#reservation-form').submit(function(event) {
+    event.preventDefault()
+
+    const formData = new FormData(event.target)
+    const roomId = formData.get('roomId')
+    const checkinDate = formData.get('checkin-date')
+    const checkoutDate = formData.get('checkout-date')
+    const traveler = formData.get('traveler')
+
+    sessionStorage.setItem('BOOKING_ITEM', JSON.stringify({
+      roomId,
+      checkinDate,
+      checkoutDate,
+      traveler
+    }))
+
+    window.location = `/booking/${roomId}`
+  })
 })();
