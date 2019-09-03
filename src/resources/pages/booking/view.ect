@@ -9,14 +9,21 @@
 <% end %>
 
 <div class="page-container clearfix">
-  <div class="page-container__photo" style="background-image: url(https://static.stayjapan.com/room/966/a10/def/12436_cover.jpg?1508885787)"></div>
-  <form class="page-wrapper clearfix">
-    <% include 'booking/elements/reversed-price' %>
+  <div class="page-container__photo" style="background-image: url('/upload/<%= @asset.images[0] %>')"></div>
+  <form id="booking-form" class="page-wrapper clearfix">
+    <input type="hidden" name="roomId" value="<%= @asset._id %>">
+    <input type="hidden" name="checkinDate" id="checkin-date">
+    <input type="hidden" name="checkoutDate" id="checkout-date">
+    <input type="hidden" name="traveler" id="traveler">
+
+    <% include 'booking/elements/reversed-price', {
+      asset: @asset
+    } %>
 
     <div class="section-content">
       <div class="room-info">
-        <div class="room-info__title">Bayama Room</div>
-        <div class="room-info__subtitle">Charming apartment near Tokyo Dome</div>
+        <div class="room-info__title"><%= @asset.name %></div>
+        <div class="room-info__subtitle"><%= @asset.excerpt %></div>
       </div>
 
       <div class="booking-form">
@@ -24,19 +31,19 @@
           <div class="booking-form__icon">
             <span class="material-icons">account_circle</span>
           </div>
-          <input type="text" placeholder="First Name">
+          <input type="text" name="firstName" placeholder="First Name">
         </div>
         <div class="booking-form__control">
           <div class="booking-form__icon">
             <span class="material-icons">account_circle</span>
           </div>
-          <input type="text" placeholder="Last Name">
+          <input type="text" name="lastName" placeholder="Last Name">
         </div>
         <div class="booking-form__control">
           <div class="booking-form__icon">
             <span class="material-icons">email</span>
           </div>
-          <input type="text" placeholder="Email">
+          <input type="text" name="email" placeholder="Email">
         </div>
         <button class="booking-form__btn">Request Now</button>
       </div>

@@ -23,8 +23,8 @@ import { Stuck } from 'stuck-js'
   $('#checkin-date').on('apply.daterangepicker', function(ev, picker) {
     $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'))
 
-    $('#checkin-date-input').val(picker.startDate.valueOf())
-    $('#checkout-date-input').val(picker.endDate.valueOf())
+    $('#checkin-date-input').val(picker.startDate.toISOString())
+    $('#checkout-date-input').val(picker.endDate.toISOString())
   })
 
   $('#checkin-date').on('cancel.daterangepicker', function(ev, picker) {

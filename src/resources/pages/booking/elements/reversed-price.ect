@@ -1,10 +1,9 @@
 <div class="section-reversed-price">
-  <div class="section-reversed-price__photo" style="background-image: url(https://static.stayjapan.com/room/966/a10/def/12436_cover.jpg?1508885787)"></div>
+  <div class="section-reversed-price__photo" style="background-image: url('/upload/<%= @asset.images[0] %>')"></div>
   <div class="reversed-price-content">
     <div class="room-info">
-      <div class="room-info__title">Bayama Room</div>
-      <div class="room-info__subtitle">Charming apartment near Tokyo Dome</div>
-      <div class="room-info__address">Itabashi ku Tokyo</div>
+      <div class="room-info__title"><%= @asset.name %></div>
+      <div class="room-info__subtitle"><%= @asset.excerpt %></div>
     </div>
 
     <div class="room-reversed-period">
@@ -19,7 +18,7 @@
       <div class="checkout-block">
         <div class="caption">CHECK-OUT</div>
         <div class="content-date">11/14/Thu</div>
-        <div class="content-time">14:00, JST, 2019</div>
+        <div class="content-time">12:00, JST, 2019</div>
       </div>
     </div><!-- room-reversed-period"> -->
 

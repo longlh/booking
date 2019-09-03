@@ -1,0 +1,12 @@
+<% extend 'layout' %>
+
+<% block 'head-end' :%>
+<link rel="stylesheet" href="<%= @__asset('booking-success.css') %>">
+<% end %>
+
+<div class="page-container clearfix">
+  <div class="page-wrapper">
+    <div class="heading">Your booking is confirmed.</div>
+    <div class="description">We've sent your confirmation email to <strong><%= @order.email %></strong></div>
+  </div>
+</div>
