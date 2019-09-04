@@ -7,7 +7,7 @@
   color: $white;
   overflow: hidden;
   position: relative;
-  height: 125vw;
+  height: 320px;
 
   &::before {
     bottom: 0;
@@ -19,12 +19,10 @@
   }
 
   img {
-    width: 100%;
-    transform: translate(0%, -50%);
-    height: auto;
+    width: auto;
+    height: 100%;
     left: 0;
     position: absolute;
-    top: 50%;
   }
 
   .visual-content {
@@ -72,6 +70,15 @@
 
   @media screen and (min-width: $grid-md) {
     height: 320px;
+
+    img {
+      width: 100%;
+      height: auto;
+      transform: translate(0%, -50%);
+      left: 0;
+      position: absolute;
+      top: 50%;
+    }
 
     .visual-content {
       &::before {
