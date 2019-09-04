@@ -15,10 +15,18 @@
 
       <div class="section-about__other-photos">
         <div class="room-thumbs">
+          <% @index = 1 %>
           <% for image in @asset.images : %>
-          <a href="/upload/<%= image %>" class="room-thumbs__item">
+          <a href="/upload/<%= image %>" class="room-thumbs__item" style="display: <% if @index > 7 : %>none<% else : %>block<% end %>">
             <img src="/upload/<%= image %>">
+            <% if @index > 6 : %>
+            <div class="room-thumbs__more-text">
+              <div class="room-thumbs__more-other">Other photos</div>
+              <div class="room-thumbs__more-count">5 photos</div>
+            </div>
+            <% end %>
           </a>
+          <% @index++ %>
           <% end %>
         </div>
       </div><!-- section-about__other-photos -->

@@ -314,12 +314,30 @@ $section-text-color: #666;
       background: #000;
       text-align: center;
       overflow: hidden;
+      position: relative;
 
       img {
         display: inline-block;
         width: auto;
         height: 100%;
       }
+    }
+
+    &__more-text {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding-top: 15px;
+      text-align: center;
+      color: white;
+      background: rgba(34,34,34,0.5);
+      cursor: pointer;
+    }
+
+    &__more-count {
+      font-size: 20px;
     }
   }
 
@@ -361,6 +379,10 @@ $section-text-color: #666;
           height: auto;
           max-height: 120px;
         }
+      }
+
+      &__more-text {
+        padding-top: 35px;
       }
     }
   }
