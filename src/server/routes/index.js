@@ -14,11 +14,11 @@ export default {
     get: controllers.contact.view
   },
   '/booking/:id': {
-    get: controllers.room.viewBooking,
-    post: controllers.room.requestBooking
+    get: controllers.booking.view,
+    post: controllers.booking.request
   },
   '/booking/:id/success': {
-    get: controllers.room.bookingSuccess
+    get: controllers.booking.success
   },
   '/admin': {
     get: (req, res, next) => {

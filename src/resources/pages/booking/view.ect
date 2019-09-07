@@ -12,9 +12,9 @@
   <div class="page-container__photo" style="background-image: url('/upload/<%= @asset.images[0] %>')"></div>
   <form id="booking-form" class="page-wrapper clearfix">
     <input type="hidden" name="roomId" value="<%= @asset._id %>">
-    <input type="hidden" name="checkinDate" id="checkin-date">
-    <input type="hidden" name="checkoutDate" id="checkout-date">
-    <input type="hidden" name="traveler" id="traveler">
+    <input type="hidden" name="checkinDate" id="checkin-date-input">
+    <input type="hidden" name="checkoutDate" id="checkout-date-input">
+    <input type="hidden" name="traveler" id="traveler-input">
 
     <% include 'booking/elements/reversed-price', {
       asset: @asset
@@ -45,7 +45,7 @@
           </div>
           <input type="text" name="email" placeholder="Email">
         </div>
-        <button class="booking-form__btn">Request Now</button>
+        <button class="booking-form__btn" id="booking-btn">Book</button>
       </div>
     </div><!-- section-content -->
   </form>

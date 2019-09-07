@@ -6,7 +6,7 @@
         <span class="material-icons reservation-widget__close" id="reservation-widget-close">close</span>
       </div>
       <div class="reservation-widget__form">
-        <form id="reservation-form" class="widget-form">
+        <form id="reservation-form" class="widget-form" autocomplete="off">
           <input type="hidden" name="roomId" value="<%= @asset._id %>">
           <div class="widget-form__condition">
             <div class="widget-form__control">
@@ -45,7 +45,7 @@
           </div>
 
           <div class="widget-form__action">
-            <button type="submit">Request booking</button>
+            <button type="submit">Proceed to booking</button>
           </div>
         </form>
       </div>

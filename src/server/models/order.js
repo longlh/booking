@@ -1,3 +1,5 @@
+import hash from '@emotion/hash'
+
 import mongoose from '@/infrastructure/mongoose'
 
 const schema = new mongoose.Schema({
@@ -25,6 +27,12 @@ const schema = new mongoose.Schema({
   },
   traveler: {
     type: Number
+  },
+  bookingId: {
+    type: String,
+    default: function() {
+      return hash(new Date().toISOString()).toUpperCase()
+    }
   }
 }, {
   timestamps: true
