@@ -8,7 +8,7 @@ services:
       - "27020:27017"
 
   booking:
-    image: node:carbon
+    image: node:buster
     container_name: joshua.booking
     working_dir: /usr/booking
     command: bash -c "tail -f /dev/null"

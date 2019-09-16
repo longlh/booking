@@ -1,6 +1,7 @@
 import cors from 'cors'
 import express from 'express'
 import morgan from 'morgan'
+import TimeFixPlugin from 'time-fix-plugin'
 import webpack from 'webpack'
 import webpackDevMiddleware from 'webpack-dev-middleware'
 import webpackHotMiddleware from 'webpack-hot-middleware'
@@ -20,6 +21,7 @@ const compiler = webpack({
   ...config,
   // override with development configuration
   mode: 'development',
+  // devtool: 'cheap-module-eval-source-map',
   // inject webpack-hot-middleware
   entry: Object.entries(config.entry).reduce(
     (entry, [ key, value ]) => ({
@@ -32,8 +34,9 @@ const compiler = webpack({
    {}
   ),
   plugins: [
-    ...config.plugins,
-    new webpack.HotModuleReplacementPlugin()
+    new TimeFixPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    ...config.plugins
   ]
 })
 
@@ -50,7 +53,8 @@ app.use(
     watchOption: {
       ignore: /node_modules/,
       aggregateTimeout: 10e3
-    }
+    },
+    logLevel: 'warn'
   }),
   webpackHotMiddleware(compiler, {
     path: '/__hmr'
