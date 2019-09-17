@@ -1,6 +1,7 @@
 import cors from 'cors'
 import express from 'express'
 import morgan from 'morgan'
+import SpeedMeasurePlugin from 'speed-measure-webpack-plugin'
 import TimeFixPlugin from 'time-fix-plugin'
 import webpack from 'webpack'
 import webpackDevMiddleware from 'webpack-dev-middleware'
@@ -17,28 +18,32 @@ const state = {
 }
 
 // init compiler & webpack stuffs
-const compiler = webpack({
-  ...config,
-  // override with development configuration
-  mode: 'development',
-  // devtool: 'cheap-module-eval-source-map',
-  // inject webpack-hot-middleware
-  entry: Object.entries(config.entry).reduce(
-    (entry, [ key, value ]) => ({
-      ...entry,
-      [key]: [
-        ...value,
-        `webpack-hot-middleware/client?reload=true&path=${devServer}/__hmr`
-      ]
-    }),
-   {}
-  ),
-  plugins: [
-    new TimeFixPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
-    ...config.plugins
-  ]
-})
+const compiler = webpack(
+  new SpeedMeasurePlugin({
+    disable: false
+  }).wrap({
+    ...config,
+    // override with development configuration
+    mode: 'development',
+    // devtool: 'cheap-module-eval-source-map',
+    // inject webpack-hot-middleware
+    entry: Object.entries(config.entry).reduce(
+      (entry, [ key, value ]) => ({
+        ...entry,
+        [key]: [
+          ...value,
+          `webpack-hot-middleware/client?reload=true&path=${devServer}/__hmr`
+        ]
+      }),
+     {}
+    ),
+    plugins: [
+      new TimeFixPlugin(),
+      new webpack.HotModuleReplacementPlugin(),
+      ...config.plugins
+    ]
+  })
+ )
 
 // handle ping
 app.get('/alive', (req, res) => res.sendStatus(204))

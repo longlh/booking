@@ -55,13 +55,13 @@ export default {
     new MiniCssExtractPlugin({
       filename: 'css/[name].[hash:6].css'
     }),
-    new OptimizeCssAssetsPlugin(),
+    devMode ? null : new OptimizeCssAssetsPlugin(),
     new WebpackAssetsManifest({
       output: path.join(outDir, '../manifest.json'),
       publicPath: `${assetEndpoint}/assets/`,
       writeToDisk: true
     })
-  ],
+  ].filter((a) => a),
   resolve: {
     extensions: [ '.js', '.jsx', '.css', '.scss', '.sass' ],
     modules: [
