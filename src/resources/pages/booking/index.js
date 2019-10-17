@@ -1,3 +1,4 @@
+import dateFormat from 'date-format'
 import request from 'superagent'
 
 const form = document.getElementById('booking-form')
@@ -8,18 +9,25 @@ if (!order.checkinDate || !order.checkoutDate) {
 }
 
 window.addEventListener('load', (event) => {
-  const checkinDate = document.getElementById('checkin-date')
-  const checkoutDate = document.getElementById('checkout-date')
-  const traveler = document.getElementById('traveler')
+  const checkinDate = document.getElementById('checkin-date-input')
+  const checkoutDate = document.getElementById('checkout-date-input')
+  const traveler = document.getElementById('traveler-input')
+  const contentCheckin = document.getElementById('content-checkin')
+  const contentCheckout = document.getElementById('content-checkout')
+  const contentTraveler = document.getElementById('content-traveler')
 
   checkinDate.value = order.checkinDate
   checkoutDate.value = order.checkoutDate
   traveler.value = order.traveler
+  contentCheckin.innerHTML = dateFormat('yyyy/MM/dd', new Date(order.checkinDate))
+  contentCheckout.innerHTML = dateFormat('yyyy/MM/dd', new Date(order.checkoutDate))
+  contentTraveler.innerHTML = order.traveler
 })
 
 form.addEventListener('submit', async (event) => {
   event.preventDefault()
 
+  const bookingBtn = document.getElementById('booking-btn')
   const formData = new FormData(event.target)
   const roomId = formData.get('roomId')
   const checkinDate = formData.get('checkinDate')
@@ -28,6 +36,8 @@ form.addEventListener('submit', async (event) => {
   const firstName = formData.get('firstName')
   const lastName = formData.get('lastName')
   const email = formData.get('email')
+
+  bookingBtn.setAttribute('disabled', 'disabled')
 
   try {
     const { body: order } = await request.post(`/booking/${roomId}`)
@@ -46,5 +56,6 @@ form.addEventListener('submit', async (event) => {
     window.location = `/booking/${order._id}/success`
   } catch (e) {
     console.log(e)
+    bookingBtn.removeAttribute('disabled')
   }
 })
